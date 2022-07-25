@@ -1,10 +1,7 @@
 <!-- site wrapper -->
-    <div class="site-wrapper">
-    
+    <div class="site-wrapper">   
         <div class="main-overlay"></div>
-    
-        <!-- header -->
-        
+           <!-- header -->       
     <app-header></app-header>
         <!-- page header -->
         <section class="page-header">
@@ -73,7 +70,7 @@
                 </div>
     
                 <!-- Contact Form -->
-                <form id="contact-form" class="contact-form" method="post">
+                <form id="contact-form" class="contact-form" method="post"  [formGroup]="contact" (ngSubmit)="send()">
                     
                     <div class="messages"></div>
                     
@@ -81,7 +78,7 @@
                         <div class="column col-md-6">
                             <!-- Name input -->
                             <div class="form-group">
-                                <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Your name" required="required" data-error="Name is required.">
+                                <input type="text" class="form-control" formControlName="Name" id="Name" placeholder="Your name" required="required" data-error="Name is required.">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -89,7 +86,7 @@
                         <div class="column col-md-6">
                             <!-- Email input -->
                             <div class="form-group">
-                                <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Email address" required="required" data-error="Email is required.">
+                                <input type="email" class="form-control" id="Email" formControlName="Email" placeholder="Email address" required="required" data-error="Email is required.">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -97,7 +94,7 @@
                         <div class="column col-md-12">
                             <!-- Email input -->
                             <div class="form-group">
-                                <input type="text" class="form-control" id="InputSubject" name="InputSubject" placeholder="Subject" required="required" data-error="Subject is required.">
+                                <input type="text" class="form-control" id="Subject" formControlName="Subject" placeholder="Subject" required="required" data-error="Subject is required.">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -105,7 +102,7 @@
                         <div class="column col-md-12">
                             <!-- Message textarea -->
                             <div class="form-group">
-                                <textarea name="InputMessage" id="InputMessage" class="form-control" rows="4" placeholder="Your message here..." required="required" data-error="Message is required."></textarea>
+                                <textarea formControlName="Message" id="Message" class="form-control" rows="4" placeholder="Your message here..." required="required" data-error="Message is required."></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -117,12 +114,7 @@
                 <!-- Contact Form end -->
             </div>
         </section>
-    
-        
-    
-        <!-- footer -->
-       
-    </div><!-- end site wrapper -->
+       </div>
     
     <!-- search popup area -->
     <div class="search-popup">
@@ -155,28 +147,28 @@
         <nav>
             <ul class="vertical-menu">
                 <li class="active">
-                    <a routerLink="home">Home</a>
+                    <a routerLink="/home">Home</a>
                     <ul class="submenu">
-                        <li><a routerLink="home">Magazine</a></li>
-                        <li><a routerLink="personal">Personal</a></li>
-                        <li><a routerLink="personal-alt">Personal Alt</a></li>
-                        <li><a routerLink="minimal">Minimal</a></li>
-                        <li><a routerLink="classic">Classic</a></li>
+                        <li><a routerLink="/home">Magazine</a></li>
+                        <li><a routerLink="/personal">Personal</a></li>
+                        <li><a routerLink="/personal-alt">Personal Alt</a></li>
+                        <li><a routerLink="/minimal">Minimal</a></li>
+                        <li><a routerLink="/classic">Classic</a></li>
                     </ul>
                 </li>
-                <li><a routerLink="category">Lifestyle</a></li>
-                <li><a routerLink="category">Inspiration</a></li>
+                <li><a routerLink="/category">Lifestyle</a></li>
+                <li><a routerLink="/category">Inspiration</a></li>
                 <li>
                     <a routerLink="#">Pages</a>
                     <ul class="submenu">
-                        <li><a routerLink="category">Category</a></li>
-                        <li><a routerLink="blog-single">Blog Single</a></li>
-                        <li><a routerLink="blog-single-alt">Blog Single Alt</a></li>
-                        <li><a routerLink="about">About</a></li>
-                        <li><a routerLink="contact">Contact</a></li>
+                        <li><a routerLink="/category">Category</a></li>
+                        <li><a routerLink="/blog-single">Blog Single</a></li>
+                        <li><a routerLink="/blog-single-alt">Blog Single Alt</a></li>
+                        <li><a routerLink="/about">About</a></li>
+                        <li><a routerLink="/contact">Contact</a></li>
                     </ul>
                 </li>
-                <li><a routerLink="contact">Contact</a></li>
+                <li><a routerLink="/contact">Contact</a></li>
             </ul>
         </nav>
     

@@ -99,7 +99,7 @@
                 <div class="post featured-post-xl">
                     <div class="details clearfix">
                         <a routerLink="/category" class="category-badge lg">{{data[59].attributes.category.data.attributes.title}}</a>
-                        <h4 class="post-title"><a routerLink="blog-single">{{data[59].attributes.heading}}</a></h4>
+                        <h4 class="post-title"><a [routerLink]="['/blog-single',data[59].id]">{{data[59].attributes.heading}}</a></h4>
                         <ul class="meta list-inline mb-0">
                             <li class="list-inline-item"><a routerLink="#">{{data[59].attributes.author}}</a></li>
                             <li class="list-inline-item">{{data[59].attributes.date}}</li>
@@ -114,14 +114,14 @@
                 <!-- post -->
                 <div class="post featured-post-xl">
                     <div class="details clearfix">
-                        <a routerLink="category" class="category-badge lg">{{data[60].attributes.category.data.attributes.title}}</a>
-                        <h4 class="post-title"><a routerLink="/blog-single">{{data[60].attributes.heading}}</a></h4>
+                        <a routerLink="/category" class="category-badge lg">{{data[60].attributes.category.data.attributes.title}}</a>
+                        <h4 class="post-title"><a [routerLink]="['/blog-single',data[60].id]">{{data[60].attributes.heading}}</a></h4>
                         <ul class="meta list-inline mb-0">
                             <li class="list-inline-item"><a routerLink="#">{{data[60].attributes.author}}</a></li>
                             <li class="list-inline-item">{{data[60].attributes.date}}</li>
                         </ul>
                     </div>
-                    <a routerLink="blog-single">
+                    <a [routerLink]="['/blog-single',data[60].id]">
                         <div class="thumb rounded">
                             <div class="inner data-bg-image" data-bg-image="assets/images/posts/featured-xl-2.jpg"></div>
                         </div>
@@ -142,11 +142,11 @@
 					<!-- post -->
 					<div class="post post-classic rounded bordered" *ngFor="let post of data.slice(61,65)">
 						<div class="thumb top-rounded">
-							<a routerLink="category" class="category-badge lg position-absolute">{{post.attributes.category.data.attributes.title}}</a>
+							<a routerLink="/category" class="category-badge lg position-absolute">{{post.attributes.category.data.attributes.title}}</a>
 							<span class="post-format">
 								<i class="icon-picture"></i>
 							</span>
-							<a routerLink="/blog-single">
+							<a [routerLink]="['/blog-single',post.id]">
 								<div class="inner">
 									<img src={{post.attributes.image.data[0].attributes.name}} alt="post-title" />
 								</div>
@@ -154,11 +154,12 @@
 						</div>
 						<div class="details">
 							<ul class="meta list-inline mb-0">
-								<li class="list-inline-item"><a routerLink="#"><img src={{post.attributes.image1.data[0].attributes.name}} class="author" alt="author"/>{{post.attributes.author}}</a></li>
+								<li class="list-inline-item"><a routerLink="#">
+		                          <img src={{post.attributes.image1.data[0].attributes.name}} class="author" alt="author"/>{{post.attributes.author}}</a></li>
 								<li class="list-inline-item">{{post.attributes.date}}</li>
 								<li class="list-inline-item"><i class="icon-bubble"></i>(0)</li>
 							</ul>
-							<h5 class="post-title mb-3 mt-3"><a routerLink="blog-single">{{post.attributes.heading}}</a></h5>
+							<h5 class="post-title mb-3 mt-3"><a [routerLink]="['/blog-single',post.id]">{{post.attributes.heading}}</a></h5>
 							<p class="excerpt mb-0">{{post.attributes.description}}</p>
 						</div>
 						<div class="post-bottom clearfix d-flex align-items-center">
@@ -174,10 +175,10 @@
 								</ul>
 							</div>
 							<div class="float-end d-none d-md-block">
-								<a routerLink="blog-single" class="more-link">Continue reading<i class="icon-arrow-right"></i></a>
+								<a [routerLink]="['/blog-single',post.id]" class="more-link">Continue reading<i class="icon-arrow-right"></i></a>
 							</div>
 							<div class="more-button d-block d-md-none float-end">
-								<a routerLink="blog-single"><span class="icon-options"></span></a>
+								<a [routerLink]="['/blog-single',post.id]"><span class="icon-options"></span></a>
 							</div>
 						</div>
 					</div>
@@ -223,57 +224,24 @@
 							</div>
 							<div class="widget-content">
 								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">1</span>
-										<a routerLink="blog-single">
-											<div class="inner">
-												<img src="assets/images/posts/tabs-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a routerLink="blog-single">3 Easy Ways To Make Your iPhone Faster</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
+				
+								<div class="post post-list-sm circle" *ngFor="let post of data.slice(21,24)">
+								  <div class="thumb circle">
+									<!-- <span class="number">1</span> -->
+									<a [routerLink]="['/blog-single',post.id]">
+									  <div class="inner">
+										<img src={{post?.attributes?.image.data[0].attributes.name}} alt="post-title" />
+									  </div>
+									</a>
+								  </div>
+								  <div class="details clearfix">
+									<h6 class="post-title my-0"><a [routerLink]="['/blog-single',post.id]">{{post?.attributes?.heading}}</a></h6>
+									<ul class="meta list-inline mt-1 mb-0">
+									  <li class="list-inline-item">{{post?.attributes?.date}}</li>
+									</ul>
+								  </div>
 								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">2</span>
-										<a routerLink="blog-single">
-											<div class="inner">
-												<img src="assets/images/posts/tabs-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a routerLink="blog-single">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">3</span>
-										<a routerLink="blog-single">
-											<div class="inner">
-												<img src="assets/images/posts/tabs-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a routerLink="blog-single">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-							</div>		
+							  </div>
 						</div>
 
 						<!-- widget categories -->
@@ -340,7 +308,7 @@
 									<!-- post -->
 									<div class="post post-carousel">
 										<div class="thumb rounded">
-											<a routerLink="category" class="category-badge position-absolute">Trending</a>
+											<a routerLink="/category" class="category-badge position-absolute">Trending</a>
 											<a routerLink="blog-single">
 												<div class="inner">
 													<img src="assets/images/widgets/widget-carousel-2.jpg" alt="post-title" />
@@ -356,7 +324,7 @@
 									<!-- post -->
 									<div class="post post-carousel">
 										<div class="thumb rounded">
-											<a routerLink="category" class="category-badge position-absolute">How to</a>
+											<a routerLink="/category" class="category-badge position-absolute">How to</a>
 											<a routerLink="blog-single">
 												<div class="inner">
 													<img src="assets/images/widgets/widget-carousel-1.jpg" alt="post-title" />

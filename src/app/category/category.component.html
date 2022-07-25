@@ -1,136 +1,156 @@
-   <app-header></app-header>
-   <!-- site wrapper -->
-    <div class="site-wrapper">
-            <div class="main-overlay"></div>
-    
-        <section class="page-header">
-            <div class="container-xl">
-                <div class="text-center">
-                    <h1 class="mt-0 mb-2">Lifestyle</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center mb-0">
-                            <li class="breadcrumb-item"><a routerLink="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Lifestyle</li>
-                        </ol>
-                    </nav>
-                </div>
+<app-header></app-header>
+<!-- site wrapper -->
+<div class="site-wrapper">
+    <div class="main-overlay"></div>
+
+    <section class="page-header">
+        <div class="container-xl">
+            <div class="text-center">
+                <h1 class="mt-0 mb-2">Lifestyle</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center mb-0">
+                        <li class="breadcrumb-item"><a routerLink="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Lifestyle</li>
+                    </ol>
+                </nav>
             </div>
-        </section>
-    
-        <!-- section main content -->
-        <section class="main-content">
-            <div class="container-xl">
-    
-                <div class="row gy-4">
-    
-                    <div class="col-lg-8">
-    
-                        <div class="row gy-4">
-                            <div class="col-sm-6" *ngFor="let post of data.slice(36,46)">                                                                                                 
-                                <!-- post -->
-                                <div class="post post-grid rounded bordered">
-                                    <div class="thumb top-rounded">
-                                        <a routerLink="category" class="category-badge position-absolute">Lifestyle</a>
-                                        <span class="post-format">
-                                            <i class="icon-picture"></i>
-                                        </span>
-                                        <a routerLink="/blog-single">
-                                            <div class="inner">
-                                                <img src={{post?.attributes?.image?.data[0].attributes.name}} alt="post-title" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="details">
-                                        <ul class="meta list-inline mb-0">
-                                            <li class="list-inline-item"><a routerLink="#"><img src={{post?.attributes?.image1?.data[0].attributes.name}} class="author" alt="author"/>Katen Doe</a></li>
-                                            <li class="list-inline-item">{{post?.attributes?.date}}</li>
-                                        </ul>
-                                        <h5 class="post-title mb-3 mt-3"><a routerLink="/blog-single">{{post.attributes.heading}}</a></h5>
-                                        <p class="excerpt mb-0">{{post.attributes.description}}</p>
-                                    </div>
-                                    <div class="post-bottom clearfix d-flex align-items-center">
-                                        <div class="social-share me-auto">
-                                            <button class="toggle-button icon-share"></button>
-                                            <ul class="icons list-unstyled list-inline mb-0">
-                                                <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a></li>
-                                                <li class="list-inline-item"><a routerLink="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a></li>
-                                                <li class="list-inline-item"><a routerLink="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                                <li class="list-inline-item"><a routerLink="#"><i class="far fa-envelope"></i></a></li>
-                                            </ul>
+        </div>
+    </section>
+
+    <!-- section main content -->
+    <section class="main-content">
+        <div class="container-xl">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+
+                    <div class="row gy-4">
+                        <div class="col-sm-6" *ngFor="let post of data.slice(36,46)">
+                            <!-- post -->
+                            <div class="post post-grid rounded bordered">
+                                <div class="thumb top-rounded">
+                                    <a routerLink="/category" class="category-badge position-absolute">{{post?.attributes?.category?.data.attributes.title}}</a>
+                                    <span class="post-format">
+                                        <i class="icon-picture"></i>
+                                    </span>
+                                    <a [routerLink]="['/blog-single',post.id]">
+                                        <div class="inner">
+                                            <img src={{post?.attributes?.image?.data[0].attributes.name}}
+                                                alt="post-title" />
                                         </div>
-                                        <div class="more-button float-end">
-                                            <a routerLink="/blog-single"><span class="icon-options"></span></a>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </div>
-    
-                           
-    
-                        </div>
-    
-                        <nav>
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item active" aria-current="page">
-                                    <span class="page-link">1</span>
-                                </li>
-                                <li class="page-item"><a class="page-link" routerLink="#">2</a></li>
-                                <li class="page-item"><a class="page-link" routerLink="#">3</a></li>
-                            </ul>
-                        </nav>
-    
-                    </div>
-                    <div class="col-lg-4">
-    
-                        <!-- sidebar -->
-                        <div class="sidebar">
-                            <!-- widget about -->
-                            <div class="widget rounded">
-                                <div class="widget-about data-bg-image text-center" data-bg-image="assets/images/map-bg.png">
-                                    <img src={{data[29].attributes?.image?.data[0].attributes.name}} alt="logo" class="mb-4" />
-                                    <p class="mb-4">{{data[29].attributes.description}}</p>
-                                    <ul class="social-icons list-unstyled list-inline mb-0">
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-medium"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-youtube"></i></a></li>
+                                <div class="details">
+                                    <ul class="meta list-inline mb-0">
+                                        <li class="list-inline-item"><a routerLink="#"><img
+                                                    src={{post?.attributes?.image1?.data[0].attributes.name}}
+                                                    class="author" alt="author" />{{post.attributes.author}}</a></li>
+                                        <li class="list-inline-item">{{post?.attributes?.date}}</li>
                                     </ul>
+                                    <h5 class="post-title mb-3 mt-3"><a
+                                            [routerLink]="['/blog-single',post.id]">{{post.attributes.heading}}</a></h5>
+                                    <p class="excerpt mb-0">{{post.attributes.description}}</p>
+                                </div>
+                                <div class="post-bottom clearfix d-flex align-items-center">
+                                    <div class="social-share me-auto">
+                                        <button class="toggle-button icon-share"></button>
+                                        <ul class="icons list-unstyled list-inline mb-0">
+                                            <li class="list-inline-item"><a routerLink="#"><i
+                                                        class="fab fa-facebook-f"></i></a></li>
+                                            <li class="list-inline-item"><a routerLink="#"><i
+                                                        class="fab fa-twitter"></i></a></li>
+                                            <li class="list-inline-item"><a routerLink="#"><i
+                                                        class="fab fa-linkedin-in"></i></a></li>
+                                            <li class="list-inline-item"><a routerLink="#"><i
+                                                        class="fab fa-pinterest"></i></a></li>
+                                            <li class="list-inline-item"><a routerLink="#"><i
+                                                        class="fab fa-telegram-plane"></i></a></li>
+                                            <li class="list-inline-item"><a routerLink="#"><i
+                                                        class="far fa-envelope"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="more-button float-end">
+                                        <a routerLink="/blog-single"><span class="icon-options"></span></a>
+                                    </div>
                                 </div>
                             </div>
-    
-                            <!-- widget popular posts -->
-                            <div class="widget rounded">
-                                <div class="widget-header text-center">
-                                    <h3 class="widget-title">Popular Posts</h3>
-                                    <img src="assets/images/wave.svg" class="wave" alt="wave" />
-                                </div>
-                                <div class="widget-content">
-                                    <!-- post -->
-                                    <div class="post post-list-sm circle" >
+                        </div>
+
+
+
+                    </div>
+
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">1</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" routerLink="#">2</a></li>
+                            <li class="page-item"><a class="page-link" routerLink="#">3</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+                <div class="col-lg-4">
+
+                    <!-- sidebar -->
+                    <div class="sidebar">
+                        <!-- widget about -->
+                        <div class="widget rounded">
+                            <div class="widget-about data-bg-image text-center"
+                                data-bg-image="assets/images/map-bg.png">
+                                <img src={{data[29].attributes?.image?.data[0].attributes.name}} alt="logo"
+                                    class="mb-4" />
+                                <p class="mb-4">{{data[29].attributes.description}}</p>
+                                <ul class="social-icons list-unstyled list-inline mb-0">
+                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a>
+                                    </li>
+                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-medium"></i></a>
+                                    </li>
+                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-youtube"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- widget popular posts -->
+                        <div class="widget rounded">
+                            <div class="widget-header text-center">
+                                <h3 class="widget-title">Popular Posts</h3>
+                                <img src="assets/images/wave.svg" class="wave" alt="wave" />
+                            </div>
+                            <div class="widget-content">
+                                <!-- post -->
+                                <div class="post post-list-sm circle">
                                     <div class="post post-list-sm circle" *ngFor="let post of data.slice(47,50)">
                                         <div class="thumb circle">
                                             <span class="number">{{post.attributes.title}}</span>
                                             <a routerLink="/blog-single">
                                                 <div class="inner">
-                                                    <img src={{post?.attributes?.image?.data[0].attributes.name}} alt="post-title" />
+                                                    <img src={{post?.attributes?.image?.data[0].attributes.name}}
+                                                        alt="post-title" />
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="details clearfix">
-                                            <h6 class="post-title my-0"><a routerLink="/blog-single">{{post.attributes.heading}}</a></h6>
+                                            <h6 class="post-title my-0"><a
+                                                    routerLink="/blog-single">{{post.attributes.heading}}</a></h6>
                                             <ul class="meta list-inline mt-1 mb-0">
                                                 <li class="list-inline-item">{{post.attributes.date}}</li>
                                             </ul>
                                         </div>
                                     </div>
-                          
-                                </div>		
+
+                                </div>
                             </div>
-    
+
                             <!-- widget categories -->
                             <div class="widget rounded">
                                 <div class="widget-header text-center">
@@ -147,9 +167,9 @@
                                         <li><a routerLink="#">Culture</a><span>(3)</span></li>
                                     </ul>
                                 </div>
-                                
+
                             </div>
-    
+
                             <!-- widget newsletter -->
                             <div class="widget rounded">
                                 <div class="widget-header text-center">
@@ -160,14 +180,16 @@
                                     <span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
                                     <form>
                                         <div class="mb-2">
-                                            <input class="form-control w-100 text-center" placeholder="Email address…" type="email">
+                                            <input class="form-control w-100 text-center" placeholder="Email address…"
+                                                type="email">
                                         </div>
                                         <button class="btn btn-default btn-full" type="submit">Sign Up</button>
                                     </form>
-                                    <span class="newsletter-privacy text-center mt-3">By signing up, you agree to our <a routerLink="#">Privacy Policy</a></span>
-                                </div>		
+                                    <span class="newsletter-privacy text-center mt-3">By signing up, you agree to our <a
+                                            routerLink="#">Privacy Policy</a></span>
+                                </div>
                             </div>
-    
+
                             <!-- widget post carousel -->
                             <div class="widget rounded">
                                 <div class="widget-header text-center">
@@ -179,14 +201,17 @@
                                         <!-- post -->
                                         <div class="post post-carousel">
                                             <div class="thumb rounded">
-                                                <a routerLink="category" class="category-badge position-absolute">How to</a>
+                                                <a routerLink="category" class="category-badge position-absolute">How
+                                                    to</a>
                                                 <a routerLink="/blog-single">
                                                     <div class="inner">
-                                                        <img src="assets/images/widgets/widget-carousel-1.jpg" alt="post-title" />
+                                                        <img src="assets/images/widgets/widget-carousel-1.jpg"
+                                                            alt="post-title" />
                                                     </div>
                                                 </a>
                                             </div>
-                                            <h5 class="post-title mb-0 mt-4"><a routerLink="/blog-single">5 Easy Ways You Can Turn Future Into Success</a></h5>
+                                            <h5 class="post-title mb-0 mt-4"><a routerLink="/blog-single">5 Easy Ways
+                                                    You Can Turn Future Into Success</a></h5>
                                             <ul class="meta list-inline mt-2 mb-0">
                                                 <li class="list-inline-item"><a routerLink="#">Katen Doe</a></li>
                                                 <li class="list-inline-item">29 March 2021</li>
@@ -195,14 +220,17 @@
                                         <!-- post -->
                                         <div class="post post-carousel">
                                             <div class="thumb rounded">
-                                                <a routerLink="category" class="category-badge position-absolute">Trending</a>
+                                                <a routerLink="category"
+                                                    class="category-badge position-absolute">Trending</a>
                                                 <a routerLink="/blog-single">
                                                     <div class="inner">
-                                                        <img src="assets/images/widgets/widget-carousel-2.jpg" alt="post-title" />
+                                                        <img src="assets/images/widgets/widget-carousel-2.jpg"
+                                                            alt="post-title" />
                                                     </div>
                                                 </a>
                                             </div>
-                                            <h5 class="post-title mb-0 mt-4"><a routerLink="/blog-single">Master The Art Of Nature With These 7 Tips</a></h5>
+                                            <h5 class="post-title mb-0 mt-4"><a routerLink="/blog-single">Master The Art
+                                                    Of Nature With These 7 Tips</a></h5>
                                             <ul class="meta list-inline mt-2 mb-0">
                                                 <li class="list-inline-item"><a routerLink="#">Katen Doe</a></li>
                                                 <li class="list-inline-item">29 March 2021</li>
@@ -211,14 +239,17 @@
                                         <!-- post -->
                                         <div class="post post-carousel">
                                             <div class="thumb rounded">
-                                                <a routerLink="category" class="category-badge position-absolute">How to</a>
+                                                <a routerLink="category" class="category-badge position-absolute">How
+                                                    to</a>
                                                 <a routerLink="/blog-single">
                                                     <div class="inner">
-                                                        <img src="assets/images/widgets/widget-carousel-1.jpg" alt="post-title" />
+                                                        <img src="assets/images/widgets/widget-carousel-1.jpg"
+                                                            alt="post-title" />
                                                     </div>
                                                 </a>
                                             </div>
-                                            <h5 class="post-title mb-0 mt-4"><a routerLink="/blog-single">5 Easy Ways You Can Turn Future Into Success</a></h5>
+                                            <h5 class="post-title mb-0 mt-4"><a routerLink="/blog-single">5 Easy Ways
+                                                    You Can Turn Future Into Success</a></h5>
                                             <ul class="meta list-inline mt-2 mb-0">
                                                 <li class="list-inline-item"><a routerLink="#">Katen Doe</a></li>
                                                 <li class="list-inline-item">29 March 2021</li>
@@ -227,20 +258,24 @@
                                     </div>
                                     <!-- carousel arrows -->
                                     <div class="slick-arrows-bot">
-                                        <button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
-                                        <button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i class="icon-arrow-right"></i></button>
+                                        <button type="button" data-role="none"
+                                            class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i
+                                                class="icon-arrow-left"></i></button>
+                                        <button type="button" data-role="none"
+                                            class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i
+                                                class="icon-arrow-right"></i></button>
                                     </div>
-                                </div>		
+                                </div>
                             </div>
-    
+
                             <!-- widget advertisement -->
                             <div class="widget no-container rounded text-md-center">
-                                <span class="ads-title">- Sponsored Ad -</span>
+                                <span class="ads-title">{{data[17].attributes.title}}</span>
                                 <a routerLink="#" class="widget-ads">
-                                    <img src="assets/images/ads/ad-360.png" alt="Advertisement" />	
+                                  <img src={{data[17].attributes.image.data[0].attributes.name}} alt="Advertisement" />
                                 </a>
-                            </div>
-    
+                              </div>
+
                             <!-- widget tags -->
                             <div class="widget rounded">
                                 <div class="widget-header text-center">
@@ -253,86 +288,81 @@
                                     <a routerLink="#" class="tag">#Featured</a>
                                     <a routerLink="#" class="tag">#Gallery</a>
                                     <a routerLink="#" class="tag">#Celebrities</a>
-                                </div>		
+                                </div>
                             </div>
-    
                         </div>
-    
                     </div>
-    
                 </div>
-    </div>
             </div>
-        </section>
-    
-        
-        
-    
-    </div><!-- end site wrapper -->
-    
-    <!-- search popup area -->
-    <div class="search-popup">
-        <!-- close button -->
-        <button type="button" class="btn-close" aria-label="Close"></button>
-        <!-- content -->
-        <div class="search-content">
-            <div class="text-center">
-                <h3 class="mb-4 mt-0">Press ESC to close</h3>
-            </div>
-            <!-- form -->
-            <form class="d-flex search-form">
-                <input class="form-control me-2" type="search" placeholder="Search and press enter ..." aria-label="Search">
-                <button class="btn btn-default btn-lg" type="submit"><i class="icon-magnifier"></i></button>
-            </form>
         </div>
+    </section>
+
+</div>
+<!-- end site wrapper -->
+
+ <!-- search popup area -->
+ <div class="search-popup">
+    <!-- close button -->
+    <button type="button" class="btn-close" aria-label="Close"></button>
+    <!-- content -->
+    <div class="search-content">
+      <div class="text-center">
+        <h3 class="mb-4 mt-0">Press ESC to close</h3>
+      </div>
+      <!-- form -->
+      <form class="d-flex search-form">
+        <input class="form-control me-2" type="search" placeholder="Search and press enter ..." aria-label="Search">
+        <button class="btn btn-default btn-lg" type="submit"><i class="icon-magnifier"></i></button>
+      </form>
     </div>
-    
-    <!-- canvas menu -->
-    <div class="canvas-menu d-flex align-items-end flex-column">
-        <!-- close button -->
-        <button type="button" class="btn-close" aria-label="Close"></button>
-    
-        <!-- logo -->
-        <div class="logo">
-            <img src="assets/images/logo.svg" alt="Katen" />
-        </div>
-    
-        <!-- menu -->
-        <nav>
-            <ul class="vertical-menu">
-                <li class="active">
-                    <a routerLink="index">Home</a>
-                    <ul class="submenu">
-                        <li><a routerLink="index">Magazine</a></li>
-                        <li><a routerLink="personal">Personal</a></li>
-                        <li><a routerLink="personal-alt">Personal Alt</a></li>
-                        <li><a routerLink="minimal">Minimal</a></li>
-                        <li><a routerLink="classic">Classic</a></li>
-                    </ul>
-                </li>
-                <li><a routerLink="category">Lifestyle</a></li>
-                <li><a routerLink="category">Inspiration</a></li>
-                <li>
-                    <a routerLink="#">Pages</a>
-                    <ul class="submenu">
-                        <li><a routerLink="category">Category</a></li>
-                        <li><a routerLink="/blog-single">Blog Single</a></li>
-                        <li><a routerLink="blog-single-alt">Blog Single Alt</a></li>
-                        <li><a routerLink="about">About</a></li>
-                        <li><a routerLink="contact">Contact</a></li>
-                    </ul>
-                </li>
-                <li><a routerLink="contact">Contact</a></li>
-            </ul>
-        </nav>
-    
-        <!-- social icons -->
-        <ul class="social-icons list-unstyled list-inline mb-0 mt-auto w-100">
-            <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a routerLink="#"><i class="fab fa-instagram"></i></a></li>
-            <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a></li>
-            <li class="list-inline-item"><a routerLink="#"><i class="fab fa-medium"></i></a></li>
-            <li class="list-inline-item"><a routerLink="#"><i class="fab fa-youtube"></i></a></li>
-        </ul>
+  </div>
+
+  <!-- canvas menu -->
+  <div class="canvas-menu d-flex align-items-end flex-column">
+    <!-- close button -->
+    <button type="button" class="btn-close" aria-label="Close"></button>
+
+    <!-- logo -->
+    <div class="logo">
+      <img src="assets/images/logo.svg" alt="Katen" />
     </div>
+
+    <!-- menu -->
+    <nav>
+      <ul class="vertical-menu">
+        <li class="active">
+          <a routerLink="home">Home</a>
+          <ul class="submenu">
+            <li><a routerLink="/home">Magazine</a></li>
+            <li><a routerLink="/personal">Personal</a></li>
+            <li><a routerLink="/personal-alt">Personal Alt</a></li>
+            <li><a routerLink="/minimal">Minimal</a></li>
+            <li><a routerLink="/classic">Classic</a></li>
+          </ul>
+        </li>
+        <li><a routerLink="/category">Lifestyle</a></li>
+        <li><a routerLink="/category">Inspiration</a></li>
+        <li>
+          <a routerLink="#">Pages</a>
+          <ul class="submenu">
+            <li><a routerLink="/category">Category</a></li>
+            <li><a routerLink="/blog-single">Blog Single</a></li>
+            <li><a routerLink="/blog-single-alt">Blog Single Alt</a></li>
+            <li><a routerLink="/about">About</a></li>
+            <li><a routerLink="/contact">Contact</a></li>
+          </ul>
+        </li>
+        <li><a routerLink="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- social icons -->
+    <ul class="social-icons list-unstyled list-inline mb-0 mt-auto w-100">
+      <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a></li>
+      <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a></li>
+      <li class="list-inline-item"><a routerLink="#"><i class="fab fa-instagram"></i></a></li>
+      <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a></li>
+      <li class="list-inline-item"><a routerLink="#"><i class="fab fa-medium"></i></a></li>
+      <li class="list-inline-item"><a routerLink="#"><i class="fab fa-youtube"></i></a></li>
+    </ul>
+  </div>

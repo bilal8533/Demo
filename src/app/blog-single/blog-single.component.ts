@@ -18,7 +18,7 @@ export class BlogSingleComponent implements OnInit {
     pullDrag: false,
     dots: true,
     navSpeed: 700,
-    // navText: ['', ''],
+    
     responsive: {
       0: {
         items: 2

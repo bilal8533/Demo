@@ -21,11 +21,11 @@
 
                 <div class="col-md-4 col-sm-12 col-xs-12 text-center">
                     <!-- site logo -->
-                    <a class="navbar-brand" routerLink="personal-alt">
-                        <img src={{data[53].attributes.image.data[0].attributes.name}} alt="logo" /></a>
-                    <a routerLink="personal-alt" class="d-block text-logo">{{data[53].attributes.title}}<span
+                    <a class="navbar-brand" routerLink="/personal-alt">
+                        <img src={{data[53]?.attributes?.image?.data[0]?.attributes?.name}} alt="logo" /></a>
+                    <a routerLink="personal-alt" class="d-block text-logo">{{data[53]?.attributes?.title}}<span
                             class="dot">.</span></a>
-                    <span class="slogan d-block">{{data[53].attributes.heading}}</span>
+                    <span class="slogan d-block">{{data[53]?.attributes?.heading}}</span>
                 </div>
 
                 <div class="col-md-4 col-sm-12 col-xs-12">
@@ -50,33 +50,33 @@
                     <!-- menus -->
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" routerLink="index">Home</a>
+                            <a class="nav-link dropdown-toggle" routerLink="/home">Home</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" routerLink="index">Magazine</a></li>
-                                <li><a class="dropdown-item" routerLink="personal">Personal</a></li>
-                                <li><a class="dropdown-item" routerLink="personal-alt">Personal Alt</a></li>
-                                <li><a class="dropdown-item" routerLink="minimal">Minimal</a></li>
-                                <li><a class="dropdown-item" routerLink="classic">Classic</a></li>
+                                <li><a class="dropdown-item" routerLink="/home">Magazine</a></li>
+                                <li><a class="dropdown-item" routerLink="/personal">Personal</a></li>
+                                <li><a class="dropdown-item" routerLink="/personal-alt">Personal Alt</a></li>
+                                <li><a class="dropdown-item" routerLink="/minimal">Minimal</a></li>
+                                <li><a class="dropdown-item" routerLink="/classic">Classic</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="category">Lifestyle</a>
+                            <a class="nav-link" routerLink="/category">Lifestyle</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="category">Inspiration</a>
+                            <a class="nav-link" routerLink="/category">Inspiration</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" routerLink="#">Pages</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" routerLink="category">Category</a></li>
-                                <li><a class="dropdown-item" routerLink="blog-single">Blog Single</a></li>
-                                <li><a class="dropdown-item" routerLink="blog-single-alt">Blog Single Alt</a></li>
-                                <li><a class="dropdown-item" routerLink="about">About</a></li>
-                                <li><a class="dropdown-item" routerLink="contact">Contact</a></li>
+                                <li><a class="dropdown-item" routerLink="/category">Category</a></li>
+                                <li><a class="dropdown-item" routerLink="/blog-single">Blog Single</a></li>
+                                <li><a class="dropdown-item" routerLink="/blog-single-alt">Blog Single Alt</a></li>
+                                <li><a class="dropdown-item" routerLink="/about">About</a></li>
+                                <li><a class="dropdown-item" routerLink="/contact">Contact</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="contact">Contact</a>
+                            <a class="nav-link" routerLink="/contact">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -120,11 +120,11 @@
                             <!-- post -->
                             <div class="post post-grid rounded bordered">
                                 <div class="thumb top-rounded">
-                                    <a routerLink="category" class="category-badge position-absolute">{{post?.attributes?.category?.data?.attributes.title}}</a>
+                                    <a routerLink="/category" class="category-badge position-absolute">{{post?.attributes?.category?.data?.attributes.title}}</a>
                                     <span class="post-format">
                                         <i class="icon-picture"></i>
                                     </span>
-                                    <a routerLink="blog-single">
+                                    <a [routerLink]='["/blog-single",post.id]'>
                                         <div class="inner">
                                             <img src={{post?.attributes?.image?.data[0].attributes.name}} alt="post-title" />
                                         </div>
@@ -137,7 +137,7 @@
                                                     alt="author" />{{post.attributes.author}}</a></li>
                                         <li class="list-inline-item">{{post.attributes.date}}</li>
                                     </ul>
-                                    <h5 class="post-title mb-3 mt-3"><a routerLink="blog-single">{{post.attributes.heading}}</a></h5>
+                                    <h5 class="post-title mb-3 mt-3"><a [routerLink]="['/blog-single',post.id]">{{post.attributes.heading}}</a></h5>
                                     <p class="excerpt mb-0">{{post.attributes.description}}</p>
                                 </div>
                                 <div class="post-bottom clearfix d-flex align-items-center">
@@ -219,14 +219,14 @@
                                 <div class="post post-list-sm circle" *ngFor="let post of data.slice(47,50)">
                                     <div class="thumb circle">
                                         <span class="number">{{post.attributes.title}}</span>
-                                        <a routerLink="blog-single">
+                                        <a [routerLink]='["/blog-single",post.id]'>
                                             <div class="inner">
                                                 <img src={{post?.attributes?.image?.data[0].attributes.name}} alt="post-title" />
                                             </div>
                                         </a>
                                     </div>
                                     <div class="details clearfix">
-                                        <h6 class="post-title my-0"><a routerLink="blog-single">{{post.attributes.heading}}</a></h6>
+                                        <h6 class="post-title my-0"><a [routerLink]='["/blog-single",post.id]'>{{post.attributes.heading}}</a></h6>
                                         <ul class="meta list-inline mt-1 mb-0">
                                             <li class="list-inline-item">{{post.attributes.date}}</li>
                                         </ul>
@@ -285,15 +285,15 @@
                                     <!-- post -->
                                     <div class="post post-carousel">
                                         <div class="thumb rounded">
-                                            <a routerLink="category" class="category-badge position-absolute">{{post?.attributes?.category?.data?.attributes.title}}</a>
-                                            <a routerLink="blog-single">
+                                            <a routerLink="/category" class="category-badge position-absolute">{{post?.attributes?.category?.data?.attributes.title}}</a>
+                                            <a [routerLink]='["/blog-single",post.id]'>
                                                 <div class="inner">
                                                     <img src={{post?.attributes?.image?.data[0].attributes.name}}
                                                         alt="post-title" />
                                                 </div>
                                             </a>
                                         </div>
-                                        <h5 class="post-title mb-0 mt-4"><a routerLink="blog-single">{{post?.attributes?.heading}}</a></h5>
+                                        <h5 class="post-title mb-0 mt-4"><a [routerLink]='["/blog-single",post.id]'>{{post?.attributes?.heading}}</a></h5>
                                         <ul class="meta list-inline mt-2 mb-0">
                                             <li class="list-inline-item"><a routerLink="#">{{post?.attributes?.author}}</a></li>
                                             <li class="list-inline-item">{{post?.attributes?.date}}</li>

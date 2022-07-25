@@ -42,7 +42,7 @@
                         <li class="list-inline-item">{{post.attributes.date}}</li>
                         <li class="list-inline-item"><i class="icon-bubble"></i> (0)</li>
                     </ul>
-                    <h5 class="post-title mb-0 mt-4"><a routerLink="/blog-single">{{post.attributes.heading}}</a></h5>
+                    <h5 class="post-title mb-0 mt-4"><a [routerLink]='["/blog-single",post.id]'>{{post.attributes.heading}}</a></h5>
                 </div>
                 <!-- thumbnail -->
                 <div class="thumb rounded">
@@ -50,7 +50,7 @@
                     <span class="post-format">
                         <i class="icon-picture"></i>
                     </span>
-                    <a routerLink="/blog-single">
+                    <a [routerLink]='["/blog-single",post.id]'>
                         <div class="inner">
                             <img src={{post.attributes.image.data[0].attributes.name}} alt="post-title" />
                         </div>
@@ -74,16 +74,14 @@
                         </ul>
                     </div>
                     <div class="float-end d-none d-md-block">
-                        <a routerLink="/blog-single" class="more-link">Continue reading<i
+                        <a [routerLink]='["/blog-single",post.id]' class="more-link">Continue reading<i
                                 class="icon-arrow-right"></i></a>
                     </div>
                     <div class="more-button d-block d-md-none float-end">
-                        <a routerLink="/blog-single"><span class="icon-options"></span></a>
+                        <a [routerLink]='["/blog-single",post.id]'  ><span class="icon-options"></span></a>
                     </div>
                 </div>
             </div>
-
-           
 
             <!-- pagination -->
             <nav>
@@ -94,5 +92,6 @@
                     <li class="page-item"><a class="page-link" routerLink="#">3</a></li>
                 </ul>
             </nav>
+            
         </div>
     </section>

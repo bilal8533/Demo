@@ -22,18 +22,23 @@
                     <div class="post post-single">
                         <!-- post header -->
                         <div class="post-header">
-                            <h1 class="title mt-0 mb-3">{{data?.attributes?.description}}</h1>
+                            <h1 class="title mt-0 mb-3">{{data?.attributes?.heading}}</h1>
                             <ul class="meta list-inline mb-0">
                                 <li class="list-inline-item">
-                                    <a routerLink="#"><img src={{data.attributes.image1.data[0].attributes.name}} class="author" alt="author" />{{data.attributes.author}}</a></li>
-                                <li class="list-inline-item"><a routerLink="#">{{data?.attributes?.category?.data.attributes.title}}</a></li>
-                                <li class="list-inline-item">{{data.attributes.date}}</li>
+                                    <a routerLink="#">
+                                        <img src={{data?.attributes?.image?.data[0]?.attributes.name}} class="author" alt="author" />{{data?.attributes?.author}}</a></li>
+                                <li class="list-inline-item"><a routerLink="#">{{data?.attributes?.category?.data?.attributes?.title}}</a></li>
+                                <li class="list-inline-item">{{data?.attributes?.date}}</li>
                             </ul>
                         </div>
                         <!-- featured image -->
                         <div class="featured-image">
-                            <img src={{data.attributes.image.data[0].attributes.name}} alt="post-title" />
+                            <img src={{data?.attributes?.image1?.data?.attributes?.name}} alt="" />
                         </div>
+                        <div>
+                            <p class="title mt-0 mb-3"><mark><strong>{{data?.attributes?.description}}</strong></mark></p>
+                        <!-- <p><strong>{{data?.attributes?.description}}</strong></p> -->
+                    </div>
                         <!-- post content -->
                         <!-- <div class="post-content clearfix">
                             <p>The European languages are members of the same family. Their separate existence is a
@@ -86,6 +91,7 @@
                                 are members of the same family. Their separate existence is a myth. For science, music,
                                 sport, etc, Europe uses the same vocabulary.</p>
                         </div> -->
+
                         <!-- post bottom section -->
                         <div class="post-bottom">
                             <div class="row d-flex align-items-center">
@@ -256,26 +262,19 @@
                     <div class="sidebar">
                         <!-- widget about -->
                         <div class="widget rounded">
-                            <div class="widget-about data-bg-image text-center"
-                                data-bg-image="assets/images/map-bg.png">
-                                <img src={{data[29].attributes.image.data[0].attributes.name}} alt="logo" class="mb-4" />
-                                <p class="mb-4">{{data[29].attributes.description}}</p>
-                                <ul class="social-icons list-unstyled list-inline mb-0">
-                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-instagram"></i></a>
-                                    </li>
-                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a>
-                                    </li>
-                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-medium"></i></a>
-                                    </li>
-                                    <li class="list-inline-item"><a routerLink="#"><i class="fab fa-youtube"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+							<div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
+								<img src="assets/images/logo.svg" alt="logo" class="mb-4" />
+								<p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
+								<ul class="social-icons list-unstyled list-inline mb-0">
+									<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+								</ul>
+							</div>
+						</div>
 
                         <!-- widget popular posts -->
                         <div class="widget rounded">
@@ -285,24 +284,24 @@
                             </div>
                             <div class="widget-content">
                                 <!-- post -->
-                                <div class="post post-list-sm circle" *ngFor="let post of data.slice(47,50)">
+                                <div class="post post-list-sm circle">
                                     <div class="thumb circle">
-                                        <span class="number">{{post.attributes.title}}</span>
+                                        <span class="number">1</span>
                                         <a routerLink="blog-single">
                                             <div class="inner">
-                                                <img src={{post.attributes.image.data[0].attributes.name}} alt="post-title" />
+                                                <img src="assets/images/posts/tabs-1.jpg" alt="post-title" />
                                             </div>
                                         </a>
                                     </div>
                                     <div class="details clearfix">
-                                        <h6 class="post-title my-0"><a routerLink="blog-single">{{post.attributes.heading}}</a></h6>
+                                        <h6 class="post-title my-0"><a routerLink="blog-single">3 Easy Ways To Make Your iPhone Faster</a></h6>
                                         <ul class="meta list-inline mt-1 mb-0">
-                                            <li class="list-inline-item">{{post.attributes.date}}</li>
+                                            <li class="list-inline-item">29 March 2021</li>
                                         </ul>
                                     </div>
                                 </div>
                                 <!-- post -->
-                                <!-- <div class="post post-list-sm circle">
+                                <div class="post post-list-sm circle">
                                     <div class="thumb circle">
                                         <span class="number">2</span>
                                         <a routerLink="blog-single">
@@ -318,9 +317,9 @@
                                             <li class="list-inline-item">29 March 2021</li>
                                         </ul>
                                     </div>
-                                </div> -->
+                                </div>
                                 <!-- post -->
-                                <!-- <div class="post post-list-sm circle">
+                                <div class="post post-list-sm circle">
                                     <div class="thumb circle">
                                         <span class="number">3</span>
                                         <a routerLink="blog-single">
@@ -336,7 +335,7 @@
                                             <li class="list-inline-item">29 March 2021</li>
                                         </ul>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
 
@@ -381,66 +380,73 @@
 
                         <!-- widget post carousel -->
                         <div class="widget rounded">
-                            <div class="widget-header text-center">
-                                <h3 class="widget-title">Celebration</h3>
-                                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-                            </div>
-                            <div class="widget-content">
-                                <div class="post-carousel-widget">
-                                    <!-- post -->
-                                    <div class="post post-carousel">
-                                        <div class="thumb rounded">
-                                            <a routerLink="category" class="category-badge position-absolute">{{data[50].attributes.category.data.attributes.title}}</a>
-                                            <a routerLink="blog-single">
-                                                <div class="inner">
-                                                    <img src={{data[50].attributes.image.data[0].attributes.name}}
-                                                        alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <h5 class="post-title mb-0 mt-4"><a routerLink="blog-single">{{data[50].attributes.heading}}</a></h5>
-                                        <ul class="meta list-inline mt-2 mb-0">
-                                            <li class="list-inline-item"><a routerLink="#">{{data[50].attributes.author}}</a></li>
-                                            <li class="list-inline-item">{{data[50].attributes.date}}</li>
-                                        </ul>
-                                    </div>
-                                    <!-- post -->
-                                    <div class="post post-carousel">
-                                        <div class="thumb rounded">
-                                            <a routerLink="category"
-                                                class="category-badge position-absolute">{{data[51].attributes.category.data.attributes.title}}</a>
-                                            <a routerLink="blog-single">
-                                                <div class="inner">
-                                                    <img src={{data[51].attributes.image.data[0].attributes.name}}
-                                                        alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <h5 class="post-title mb-0 mt-4"><a routerLink="blog-single">{{data[51].attributes.heading}}</a></h5>
-                                        <ul class="meta list-inline mt-2 mb-0">
-                                            <li class="list-inline-item"><a routerLink="#">{{data[51].attributes.author}}</a></li>
-                                            <li class="list-inline-item">{{data[51].attributes.date}}</li>
-                                        </ul>
-                                    </div>
-                                   
-                                </div>
-                                <!-- carousel arrows -->
-                                <div class="slick-arrows-bot">
-                                    <button type="button" data-role="none"
-                                        class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i
-                                            class="icon-arrow-left"></i></button>
-                                    <button type="button" data-role="none"
-                                        class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i
-                                            class="icon-arrow-right"></i></button>
-                                </div>
-                            </div>
-                        </div>
-
+							<div class="widget-header text-center">
+								<h3 class="widget-title">Celebration</h3>
+								<img src="assets/images/wave.svg" class="wave" alt="wave" />
+							</div>
+							<div class="widget-content">
+								<div class="post-carousel-widget">
+									<!-- post -->
+									<div class="post post-carousel">
+										<div class="thumb rounded">
+											<a href="category.html" class="category-badge position-absolute">How to</a>
+											<a href="blog-single.html">
+												<div class="inner">
+													<img src="assets/images/widgets/widget-carousel-1.jpg" alt="post-title" />
+												</div>
+											</a>
+										</div>
+										<h5 class="post-title mb-0 mt-4"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
+										<ul class="meta list-inline mt-2 mb-0">
+											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
+											<li class="list-inline-item">29 March 2021</li>
+										</ul>
+									</div>
+									<!-- post -->
+									<div class="post post-carousel">
+										<div class="thumb rounded">
+											<a href="category.html" class="category-badge position-absolute">Trending</a>
+											<a href="blog-single.html">
+												<div class="inner">
+													<img src="assets/images/widgets/widget-carousel-2.jpg" alt="post-title" />
+												</div>
+											</a>
+										</div>
+										<h5 class="post-title mb-0 mt-4"><a href="blog-single">Master The Art Of Nature With These 7 Tips</a></h5>
+										<ul class="meta list-inline mt-2 mb-0">
+											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
+											<li class="list-inline-item">29 March 2021</li>
+										</ul>
+									</div>
+									<!-- post -->
+									<div class="post post-carousel">
+										<div class="thumb rounded">
+											<a href="category.html" class="category-badge position-absolute">How to</a>
+											<a href="blog-single.html">
+												<div class="inner">
+													<img src="assets/images/widgets/widget-carousel-1.jpg" alt="post-title" />
+												</div>
+											</a>
+										</div>
+										<h5 class="post-title mb-0 mt-4"><a href="blog-single">5 Easy Ways You Can Turn Future Into Success</a></h5>
+										<ul class="meta list-inline mt-2 mb-0">
+											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
+											<li class="list-inline-item">29 March 2021</li>
+										</ul>
+									</div>
+								</div>
+								<!-- carousel arrows -->
+								<div class="slick-arrows-bot">
+									<button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
+									<button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i class="icon-arrow-right"></i></button>
+								</div>
+							</div>		
+						</div>
                         <!-- widget advertisement -->
                         <div class="widget no-container rounded text-md-center">
-                            <span class="ads-title">{{data[17].attributes.title}}</span>
+                            <span class="ads-title">- Sponsored Ad -</span>
                             <a routerLink="#" class="widget-ads">
-                                <img src={{data[17].attributes.image.data[0].attributes.name}} alt="Advertisement" />
+                                <img src="assets/images/ads/ad-360.png" alt="Advertisement" />
                             </a>
                         </div>
 
@@ -469,71 +475,5 @@
     </section>
 
 
-</div><!-- end site wrapper -->
-
-<!-- search popup area -->
-<div class="search-popup">
-    <!-- close button -->
-    <button type="button" class="btn-close" aria-label="Close"></button>
-    <!-- content -->
-    <div class="search-content">
-        <div class="text-center">
-            <h3 class="mb-4 mt-0">Press ESC to close</h3>
-        </div>
-        <!-- form -->
-        <form class="d-flex search-form">
-            <input class="form-control me-2" type="search" placeholder="Search and press enter ..." aria-label="Search">
-            <button class="btn btn-default btn-lg" type="submit"><i class="icon-magnifier"></i></button>
-        </form>
-    </div>
 </div>
 
-<!-- canvas menu -->
-<div class="canvas-menu d-flex align-items-end flex-column">
-    <!-- close button -->
-    <button type="button" class="btn-close" aria-label="Close"></button>
-
-    <!-- logo -->
-    <div class="logo">
-        <img src="assets/images/logo.svg" alt="Katen" />
-    </div>
-
-    <!-- menu -->
-    <nav>
-        <ul class="vertical-menu">
-            <li class="active">
-                <a routerLink="index">Home</a>
-                <ul class="submenu">
-                    <li><a routerLink="index">Magazine</a></li>
-                    <li><a routerLink="personal">Personal</a></li>
-                    <li><a routerLink="personal-alt">Personal Alt</a></li>
-                    <li><a routerLink="minimal">Minimal</a></li>
-                    <li><a routerLink="classic">Classic</a></li>
-                </ul>
-            </li>
-            <li><a routerLink="category">Lifestyle</a></li>
-            <li><a routerLink="category">Inspiration</a></li>
-            <li>
-                <a routerLink="#">Pages</a>
-                <ul class="submenu">
-                    <li><a routerLink="category">Category</a></li>
-                    <li><a routerLink="blog-single">Blog Single</a></li>
-                    <li><a routerLink="blog-single-alt">Blog Single Alt</a></li>
-                    <li><a routerLink="about">About</a></li>
-                    <li><a routerLink="contact">Contact</a></li>
-                </ul>
-            </li>
-            <li><a routerLink="contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- social icons -->
-    <ul class="social-icons list-unstyled list-inline mb-0 mt-auto w-100">
-        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a></li>
-        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a></li>
-        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-instagram"></i></a></li>
-        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a></li>
-        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-medium"></i></a></li>
-        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-youtube"></i></a></li>
-    </ul>
-</div>
