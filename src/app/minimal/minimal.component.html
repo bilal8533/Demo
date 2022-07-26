@@ -32,7 +32,9 @@
     <section class="main-content-lg">
         <div class="container-minimal">
             <!-- post -->
-            <div class="post post-xl" *ngFor="let post of data.slice(55,59)">
+            <div class="post post-xl" *ngFor="let post of data.slice(55,59) | paginate: {itemsPerPage:2,
+                currentPage: page,
+              totalItems:totalLength }">
                 <!-- top section -->
                 <div class="post-top">
                     <ul class="meta list-inline mb-0">
@@ -84,14 +86,15 @@
             </div>
 
             <!-- pagination -->
-            <nav>
+            <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+            <!-- <nav>
                 <ul class="pagination justify-content-center">
                     <li class="page-item active" aria-current="page"> 
                     <span class="page-link">1</span> </li>
                     <li class="page-item"><a class="page-link" routerLink="#">2</a></li>
                     <li class="page-item"><a class="page-link" routerLink="#">3</a></li>
                 </ul>
-            </nav>
+            </nav> -->
             
         </div>
     </section>

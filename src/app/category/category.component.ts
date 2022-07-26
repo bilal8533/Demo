@@ -42,6 +42,8 @@ customOptions: OwlOptions = {
   date: any;
   data : any[0];
   image1: any[0];
+  totalLength : any;
+  page : number = 1;
 
   constructor(private http: HttpClient) {}
 

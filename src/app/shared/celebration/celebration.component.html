@@ -1,0 +1,72 @@
+<!-- widget post carousel -->
+<div class="widget rounded">
+    <div class="widget-header text-center">
+      <h3 class="widget-title">Celebration</h3>
+      <img src="assets/images/wave.svg" class="wave" alt="wave" />
+    </div>
+    <div class="widget-content">
+      <div class="post-carousel-widget">
+        <!-- post -->
+        <div class="post post-carousel">
+          <div class="thumb rounded">
+            <a routerLink="/category"
+              class="category-badge position-absolute">{{data[50]?.attributes?.category?.data?.attributes.title}}</a>
+            <a [routerLink]="['/blog-single',data[50].id]">
+              <div class="inner">
+                <img src={{data[50].attributes.image.data[0].attributes.name}} alt="post-title" />
+              </div>
+            </a>
+          </div>
+          <h5 class="post-title mb-0 mt-4"><a [routerLink]="['/blog-single',data[50].id]">{{data[50].attributes.heading}}</a>
+          </h5>
+          <ul class="meta list-inline mt-2 mb-0">
+            <li class="list-inline-item"><a routerLink="#">{{data[50].attributes.author}}</a></li>
+            <li class="list-inline-item">{{data[50].attributes.date}}</li>
+          </ul>
+        </div>
+        <!-- post -->
+        <div class="post post-carousel">
+          <div class="thumb rounded">
+            <a routerLink="category"
+              class="category-badge position-absolute">{{data[51]?.attributes?.category?.data?.attributes.title}}</a>
+            <a [routerLink]="['/blog-single',data[51].id]">
+              <div class="inner">
+                <img src={{data[51].attributes.image.data[0].attributes.name}} alt="post-title" />
+              </div>
+            </a>
+          </div>
+          <h5 class="post-title mb-0 mt-4"><a [routerLink]="['/blog-single',data[51]]">{{data[51].attributes.heading}}</a>
+          </h5>
+          <ul class="meta list-inline mt-2 mb-0">
+            <li class="list-inline-item"><a routerLink="#">{{data[51].attributes.heading}}</a></li>
+            <li class="list-inline-item">{{data[51].attributes.date}}</li>
+          </ul>
+        </div>
+        <!-- post -->
+        <div class="post post-carousel">
+          <div class="thumb rounded">
+            <a routerLink="category"
+              class="category-badge position-absolute">{{data[50]?.attributes?.category?.data?.attributes.title}}</a>
+            <a [routerLink]="['/blog-single',data[50].id]">
+              <div class="inner">
+                <img src={{data[50].attributes.image.data[0].attributes.name}} alt="post-title" />
+              </div>
+            </a>
+          </div>
+          <h5 class="post-title mb-0 mt-4"><a [routerLink]="['/blog-single',data[50].id]">{{data[50].attributes.heading}}</a>
+          </h5>
+          <ul class="meta list-inline mt-2 mb-0">
+            <li class="list-inline-item"><a routerLink="#">{{data[50].attributes.author}}</a></li>
+            <li class="list-inline-item">{{data[50].attributes.date}}</li>
+          </ul>
+        </div>
+      </div>
+      <!-- carousel arrows -->
+      <div class="slick-arrows-bot">
+        <button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons"
+          aria-label="Previous"><i class="icon-arrow-left"></i></button>
+        <button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons"
+          aria-label="Next"><i class="icon-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>

@@ -7,6 +7,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 import { HeaderComponent } from './header/header.component';
@@ -27,6 +28,9 @@ import { BlogSingleComponent } from './blog-single/blog-single.component';
 import { BlogSingleAltComponent } from './blog-single-alt/blog-single-alt.component';
 import { AboutComponent } from './about/about.component';
 import { PreloaderComponent } from './preloader/preloader.component';
+import { PopularpostComponent } from './shared/popularpost/popularpost.component';
+import { CelebrationComponent } from './shared/celebration/celebration.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +51,9 @@ import { PreloaderComponent } from './preloader/preloader.component';
     BlogSingleComponent,
     BlogSingleAltComponent,
     AboutComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    PopularpostComponent,
+    CelebrationComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +62,7 @@ import { PreloaderComponent } from './preloader/preloader.component';
     CarouselModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgxPaginationModule,
     ReactiveFormsModule
   ],
   providers: [],

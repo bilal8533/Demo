@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HttpClient } from '@angular/common/http';
-import { NavigationExtras } from '@angular/router';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -43,8 +44,13 @@ export class HomeComponent implements OnInit {
   data : any[0];
   image1: any[0];
   routedata:any;
+  totalLength:any;
+  page:number = 1;
 
   constructor(private http: HttpClient) { }
+
+  
+
 
   test(eve:any){
     this.routedata = eve
@@ -55,6 +61,9 @@ export class HomeComponent implements OnInit {
     this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
       console.log(res)
       this.data = res.data
+
+
+      // this.totalLength = result.length; 
       // console.log(this.data)
     })  
 

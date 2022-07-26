@@ -18,11 +18,13 @@ import { PagesComponent } from './pages/pages.component';
 import { PersonalComponent } from './personal/personal.component';
 import { PersonalAltComponent } from './personal-alt/personal-alt.component';
 import { PreloaderComponent } from './preloader/preloader.component';
+import { PopularpostComponent } from './shared/popularpost/popularpost.component';
+import { CelebrationComponent } from './shared/celebration/celebration.component';
 
 
 const routes: Routes = [
 
-  {path: '', redirectTo:'home', pathMatch: 'full'},
+  {path: '', redirectTo:'/home', pathMatch: 'full'},
   {path: 'header',component: HeaderComponent},
   {path: 'preloader',component: PreloaderComponent},
   {path: 'home', component: HomeComponent},
@@ -35,12 +37,13 @@ const routes: Routes = [
   {path: 'inspiration',component: InspirationComponent},
   {path: 'pages',component: PagesComponent},
   {path: 'category',component: CategoryComponent},
-  // {path: 'blog-single',component: BlogSingleComponent},
   {path: 'blog-single/:id',component: BlogSingleComponent},
   {path: 'blog-single-alt',component: BlogSingleAltComponent},
   {path: 'about',component: AboutComponent},
   {path: 'contact',component: ContactComponent},
-  {path: 'footer',component: FooterComponent}
+  {path: 'footer',component: FooterComponent},
+  {path: 'popularpost',component:PopularpostComponent},
+  {path: 'celebration',component:CelebrationComponent}
 ];
 
 @NgModule({

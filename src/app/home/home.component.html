@@ -84,7 +84,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div>           
           </div>
         </div>
       </div>
@@ -309,10 +309,11 @@
           </div>
 
           <div class="padding-30 rounded bordered">
-
             <div class="row">
-
-              <div class="col-md-12 col-sm-6" *ngFor="let post of data.slice(0,4) ">
+              <div class="col-md-12 col-sm-6" *ngFor="let post of data.slice(0,4) | paginate: {itemsPerPage:2,
+                                                   currentPage: page,
+                                                   totalItems:totalLength }">
+                                                  
                 <!-- | slice: 0 :; let i = index; -->
 
                 <!-- post -->
@@ -330,14 +331,11 @@
                   <div class="details">
                     <ul class="meta list-inline mb-3">
                       <li class="list-inline-item"><a routerLink="#">
-                        <img src={{post?.attributes?.image?.data[0].attributes.name}} class="author"
-                            alt="author" />{{post.attributes.author}}</a></li>
-                      <li class="list-inline-item"><a
-                          routerLink="#">{{post?.attributes?.category?.data.attributes.title}}</a></li>
+                        <img src={{post?.attributes?.image?.data[0].attributes.name}} class="author"alt="author" />{{post.attributes.author}}</a></li>
+                      <li class="list-inline-item"><a routerLink="#">{{post?.attributes?.category?.data.attributes.title}}</a></li>
                       <li class="list-inline-item">{{post.attributes.date}}</li>
                     </ul>
-                    <h5 class="post-title"><a [routerLink]="['/blog-single',post.id]">{{post.attributes.heading}}</a>
-                    </h5>
+                    <h5 class="post-title"><a [routerLink]="['/blog-single',post.id]">{{post.attributes.heading}}</a></h5>
                     <p class="excerpt mb-0">{{post.attributes.description}}</p>
                     <div class="post-bottom clearfix d-flex align-items-center">
                       <div class="social-share me-auto">
@@ -352,25 +350,22 @@
                         </ul>
                       </div>
                       <div class="more-button float-end">
-                        <a routerLinkActive="active-link" [routerLink]="['/blog-single',post  .id]"><span
-                            class="icon-options"></span></a>
+                        <a routerLinkActive="active-link" [routerLink]="['/blog-single',post.id]"><span class="icon-options"></span></a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-
-
             </div>
+
             <!-- load more button -->
-            <div class="text-center">
+            <!-- <div class="text-center">
               <button class="btn btn-simple">Load More</button>
-            </div>
-
+            </div> -->
+            <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
           </div>
-
         </div>
+         
         <div class="col-lg-4">
           <!-- sidebar -->
           <div class="sidebar">
@@ -392,32 +387,7 @@
             </div>
 
             <!-- widget popular posts -->
-            <div class="widget rounded">
-              <div class="widget-header text-center">
-                <h3 class="widget-title">Popular Posts</h3>
-                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-              </div>
-              <div class="widget-content">
-                <!-- post -->
-
-                <div class="post post-list-sm circle" *ngFor="let post of data.slice(21,24)">
-                  <div class="thumb circle">
-                    <!-- <span class="number">1</span> -->
-                    <a [routerLink]="['/blog-single',post.id]">
-                      <div class="inner">
-                        <img src={{post?.attributes?.image.data[0].attributes.name}} alt="post-title" />
-                      </div>
-                    </a>
-                  </div>
-                  <div class="details clearfix">
-                    <h6 class="post-title my-0"><a [routerLink]="['/blog-single',post.id]">{{post?.attributes?.heading}}</a></h6>
-                    <ul class="meta list-inline mt-1 mb-0">
-                      <li class="list-inline-item">{{post?.attributes?.date}}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <app-popularpost></app-popularpost>
 
             <!-- widget categories -->
             <div class="widget rounded">
@@ -458,78 +428,7 @@
               </div>
             </div>
 
-            <!-- widget post carousel -->
-            <div class="widget rounded">
-              <div class="widget-header text-center">
-                <h3 class="widget-title">Celebration</h3>
-                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-              </div>
-              <div class="widget-content">
-                <div class="post-carousel-widget">
-                  <!-- post -->
-                  <div class="post post-carousel">
-                    <div class="thumb rounded">
-                      <a routerLink="/category"
-                        class="category-badge position-absolute">{{data[50]?.attributes?.category?.data?.attributes.title}}</a>
-                      <a [routerLink]="['/blog-single',data[50].id]">
-                        <div class="inner">
-                          <img src={{data[50].attributes.image.data[0].attributes.name}} alt="post-title" />
-                        </div>
-                      </a>
-                    </div>
-                    <h5 class="post-title mb-0 mt-4"><a [routerLink]="['/blog-single',data[50].id]">{{data[50].attributes.heading}}</a>
-                    </h5>
-                    <ul class="meta list-inline mt-2 mb-0">
-                      <li class="list-inline-item"><a routerLink="#">{{data[50].attributes.author}}</a></li>
-                      <li class="list-inline-item">{{data[50].attributes.date}}</li>
-                    </ul>
-                  </div>
-                  <!-- post -->
-                  <div class="post post-carousel">
-                    <div class="thumb rounded">
-                      <a routerLink="category"
-                        class="category-badge position-absolute">{{data[51]?.attributes?.category?.data?.attributes.title}}</a>
-                      <a [routerLink]="['/blog-single',data[51].id]">
-                        <div class="inner">
-                          <img src={{data[51].attributes.image.data[0].attributes.name}} alt="post-title" />
-                        </div>
-                      </a>
-                    </div>
-                    <h5 class="post-title mb-0 mt-4"><a [routerLink]="['/blog-single',data[51]]">{{data[51].attributes.heading}}</a>
-                    </h5>
-                    <ul class="meta list-inline mt-2 mb-0">
-                      <li class="list-inline-item"><a routerLink="#">{{data[51].attributes.heading}}</a></li>
-                      <li class="list-inline-item">{{data[51].attributes.date}}</li>
-                    </ul>
-                  </div>
-                  <!-- post -->
-                  <div class="post post-carousel">
-                    <div class="thumb rounded">
-                      <a routerLink="category"
-                        class="category-badge position-absolute">{{data[50]?.attributes?.category?.data?.attributes.title}}</a>
-                      <a [routerLink]="['/blog-single',data[50].id]">
-                        <div class="inner">
-                          <img src={{data[50].attributes.image.data[0].attributes.name}} alt="post-title" />
-                        </div>
-                      </a>
-                    </div>
-                    <h5 class="post-title mb-0 mt-4"><a [routerLink]="['/blog-single',data[50].id]">{{data[50].attributes.heading}}</a>
-                    </h5>
-                    <ul class="meta list-inline mt-2 mb-0">
-                      <li class="list-inline-item"><a routerLink="#">{{data[50].attributes.author}}</a></li>
-                      <li class="list-inline-item">{{data[50].attributes.date}}</li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- carousel arrows -->
-                <div class="slick-arrows-bot">
-                  <button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons"
-                    aria-label="Previous"><i class="icon-arrow-left"></i></button>
-                  <button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons"
-                    aria-label="Next"><i class="icon-arrow-right"></i></button>
-                </div>
-              </div>
-            </div>
+            <app-celebration></app-celebration>
 
             <!-- widget advertisement -->
             <div class="widget no-container rounded text-md-center">
@@ -590,7 +489,7 @@
     <nav>
       <ul class="vertical-menu">
         <li class="active">
-          <a routerLink="home">Home</a>
+          <a routerLink="/home">Home</a>
           <ul class="submenu">
             <li><a routerLink="/home">Magazine</a></li>
             <li><a routerLink="/personal">Personal</a></li>

@@ -1,9 +1,9 @@
-<app-header></app-header>
+
 <!-- site wrapper -->
 <div class="site-wrapper">
     <div class="main-overlay"></div>
 
-    <!-- <header class="header-personal">
+    <header class="header-personal">
         <div class="container-xl header-top">
             <div class="row align-items-center">
 
@@ -21,7 +21,7 @@
 
                 <div class="col-md-4 col-sm-12 col-xs-12 text-center">
                     
-                    <a class="navbar-brand" routerLink="personal"><img src="assets/images/other/avatar-lg.png"
+                    <a class="navbar-brand" routerLink="/personal"><img src="assets/images/other/avatar-lg.png"
                             alt="logo" /></a>
                     <a routerLink="personal" class="d-block text-logo">Katen<span class="dot">.</span></a>
                     <span class="slogan d-block">Professional Writer & Personal Blogger</span>
@@ -51,38 +51,38 @@
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" routerLink="home">Home</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" routerLink="home" routerLinkActive="active-link">Magazine</a></li>
-                                <li><a class="dropdown-item" routerLink="personal" routerLinkActive="active-link">Personal</a></li>
-                                <li><a class="dropdown-item" routerLink="personal-alt" routerLinkActive="active-link">Personal Alt</a></li>
-                                <li><a class="dropdown-item" routerLink="minimal" routerLinkActive="active-link">Minimal</a></li>
-                                <li><a class="dropdown-item" routerLink="classic" routerLinkActive="active-link">Classic</a></li>
+                                <li><a class="dropdown-item" routerLink="/home" routerLinkActive="active-link">Magazine</a></li>
+                                <li><a class="dropdown-item" routerLink="/personal" routerLinkActive="active-link">Personal</a></li>
+                                <li><a class="dropdown-item" routerLink="/personal-alt" routerLinkActive="active-link">Personal Alt</a></li>
+                                <li><a class="dropdown-item" routerLink="/minimal" routerLinkActive="active-link">Minimal</a></li>
+                                <li><a class="dropdown-item" routerLink="/classic" routerLinkActive="active-link">Classic</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="category">Lifestyle</a>
+                            <a class="nav-link" routerLink="/category">Lifestyle</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="category">Inspiration</a>
+                            <a class="nav-link" routerLink="/category">Inspiration</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" routerLink="#">Pages</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" routerLink="category" routerLinkActive="active-link">Category</a></li>
-                                <li><a class="dropdown-item" routerLink="blog-single" routerLinkActive="active-link">Blog Single</a></li>
-                                <li><a class="dropdown-item" routerLink="blog-single-alt" routerLinkActive="active-link">Blog Single Alt</a></li>
-                                <li><a class="dropdown-item" routerLink="about" routerLinkActive="active-link">About</a></li>
-                                <li><a class="dropdown-item" routerLink="contact" routerLinkActive="active-link">Contact</a></li>
+                                <li><a class="dropdown-item" routerLink="/category" routerLinkActive="active-link">Category</a></li>
+                                <li><a class="dropdown-item" routerLink="/blog-single" routerLinkActive="active-link">Blog Single</a></li>
+                                <li><a class="dropdown-item" routerLink="/blog-single-alt" routerLinkActive="active-link">Blog Single Alt</a></li>
+                                <li><a class="dropdown-item" routerLink="/about" routerLinkActive="active-link">About</a></li>
+                                <li><a class="dropdown-item" routerLink="//contact" routerLinkActive="active-link">Contact</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="contact" routerLinkActive="active-link">Contact</a>
+                            <a class="nav-link" routerLink="/contact" routerLinkActive="active-link">Contact</a>
                         </li>
                     </ul>
                 </div>
 
             </div>
         </nav>
-    </header> -->
+    </header>
 
     <section class="hero-carousel">
         <div class="row post-carousel-featured post-carousel">
@@ -150,7 +150,9 @@
             <div class="row gy-4">
                 <div class="col-lg-8">
                     <div class="row gy-4">
-                        <div class="col-sm-6" *ngFor="let post of data.slice(36,46)">
+                        <div class="col-sm-6" *ngFor="let post of data.slice(36,46) | paginate: {itemsPerPage:6,
+                                                                         currentPage: page,
+                                                                       totalItems:totalLength }">
                             <div class="post post-grid rounded bordered">
                                 <div class="thumb top-rounded">
                                     <a routerLink="/category"
@@ -187,14 +189,15 @@
                                         </ul>
                                     </div>
                                     <div class="more-button float-end">
-                                        <a routerLink="blog-single"><span class="icon-options"></span></a>
+                                        <a [routerLink]='["/blog-single",post.id]'><span class="icon-options"></span></a>
                                     </div>
                                 </div>
                             </div>
                         </div>     
                    </div>
 
-                    <nav>
+                   <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+                    <!-- <nav>
                         <ul class="pagination justify-content-center">
                             <li class="page-item active" aria-current="page">
                                 <span class="page-link">1</span>
@@ -202,7 +205,7 @@
                             <li class="page-item"><a class="page-link" routerLink="#">2</a></li>
                             <li class="page-item"><a class="page-link" routerLink="#">3</a></li>
                         </ul>
-                    </nav>
+                    </nav> -->
                 </div>
                 <div class="col-lg-4">
 
@@ -232,32 +235,7 @@
                         </div>
 
                         <!-- widget popular posts -->
-                        <div class="widget rounded">
-                            <div class="widget-header text-center">
-                                <h3 class="widget-title">Popular Posts</h3>
-                                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-                            </div>
-                            <div class="widget-content">
-                                <!-- post -->
-                                <div class="post post-list-sm circle" *ngFor="let post of data.slice(47,50)">
-                                    <div class="thumb circle">
-                                        <span class="number">{{post.attributes.title}}</span>
-                                        <a [routerLink]="['/blog-single',post.id]">
-                                            <div class="inner">
-                                                <img src={{post?.attributes?.image?.data[0].attributes.name}} alt="post-title" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="details clearfix">
-                                        <h6 class="post-title my-0"><a [routerLink]="['/blog-single',post.id]">{{post.attributes.heading}}</a></h6>
-                                        <ul class="meta list-inline mt-1 mb-0">
-                                            <li class="list-inline-item">{{post.attributes.date}}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
+                       <app-popularpost></app-popularpost>
                         
                         <!-- widget categories -->
                         <div class="widget rounded">
@@ -299,61 +277,8 @@
                         </div>
 
                         <!-- widget post carousel -->
-                        <div class="widget rounded">
-                            <div class="widget-header text-center">
-                                <h3 class="widget-title">Celebration</h3>
-                                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-                            </div>
-                            <div class="widget-content">
-                                <div class="post-carousel-widget"  *ngFor="let post of data.slice(50,52)">
-                                    <!-- post -->
-                                    <div class="post post-carousel">
-                                        <div class="thumb rounded">
-                                            <a routerLink="/category" class="category-badge position-absolute">{{post?.attributes?.category?.data?.attributes.title}}</a>
-                                            <a [routerLink]="['/blog-single',post.id]">
-                                                <div class="inner">
-                                                    <img src={{post?.attributes?.image?.data[0].attributes.name}} alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <h5 class="post-title mb-0 mt-4"><a routerLink="['/blog-single', post.id]">{{post?.attributes?.heading}}</a></h5>
-                                        <ul class="meta list-inline mt-2 mb-0">
-                                            <li class="list-inline-item"><a routerLink="#">{{post?.attributes?.author}}</a></li>
-                                            <li class="list-inline-item">{{post?.attributes?.date}}</li>
-                                        </ul>
-                                    </div>
-                                    <!-- post -->
-                                    <!-- <div class="post post-carousel">
-                                        <div class="thumb rounded">
-                                            <a routerLink="category"
-                                                class="category-badge position-absolute">Trending</a>
-                                            <a routerLink="blog-single">
-                                                <div class="inner">
-                                                    <img src="assets/images/widgets/widget-carousel-2.jpg"
-                                                        alt="post-title" />
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <h5 class="post-title mb-0 mt-4"><a routerLink="blog-single">Master The Art Of
-                                                Nature With These 7 Tips</a></h5>
-                                        <ul class="meta list-inline mt-2 mb-0">
-                                            <li class="list-inline-item"><a routerLink="#">Katen Doe</a></li>
-                                            <li class="list-inline-item">29 March 2021</li>
-                                        </ul>
-                                    </div> -->
-                                    
-                                </div>
-                                <!-- carousel arrows -->
-                                <div class="slick-arrows-bot">
-                                    <button type="button" data-role="none"
-                                        class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i
-                                            class="icon-arrow-left"></i></button>
-                                    <button type="button" data-role="none"
-                                        class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i
-                                            class="icon-arrow-right"></i></button>
-                                </div>
-                            </div>
-                        </div>
+
+                       <app-celebration></app-celebration>
 
                         <!-- widget advertisement -->
                         <div class="widget no-container rounded text-md-center">
@@ -386,7 +311,8 @@
 
         </div>
     </section>
-</div><!-- end site wrapper -->
+</div
+><!-- end site wrapper -->
 
 <!-- search popup area -->
 <div class="search-popup">
@@ -420,13 +346,13 @@
     <nav>
         <ul class="vertical-menu">
             <li class="active">
-                <a routerLink="home">Home</a>
+                <a routerLink="/home">Home</a>
                 <ul class="submenu">
-                    <li><a routerLink="home">Magazine</a></li>
-                    <li><a routerLink="personal">Personal</a></li>
-                    <li><a routerLink="personal-alt">Personal Alt</a></li>
-                    <li><a routerLink="minimal">Minimal</a></li>
-                    <li><a routerLink="classic">Classic</a></li>
+                    <li><a routerLink="/home">Magazine</a></li>
+                    <li><a routerLink="/personal">Personal</a></li>
+                    <li><a routerLink="/personal-alt">Personal Alt</a></li>
+                    <li><a routerLink="/minimal">Minimal</a></li>
+                    <li><a routerLink="/classic">Classic</a></li>
                 </ul>
             </li>
             <li><a routerLink="/category">Lifestyle</a></li>
