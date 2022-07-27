@@ -272,12 +272,10 @@
               </a>
             </div> -->
             <div class="post post-over-content col-md-6">
-              <owl-carousel-o [options]="customOptions">
-
+              <owl-carousel-o [options]="customOptions" height="150">
                 <ng-container *ngFor="let post of data.slice(18,21)">
                   <ng-template carouselSlide [id]="data.id">
-
-                    <div class="details clearfix">
+                   <div class="details clearfix">
                       <a routerLink="/category" class="category-badge">{{post.attributes.title}}</a>
                       <h4 class="post-title"><a [routerLink]="['/blog-single',post.id]">{{post.attributes.heading}}</a></h4>
                       <ul class="meta list-inline mb-0">
@@ -288,7 +286,7 @@
                     <a [routerLink]="['/blog-single',post.id]">
                       <div class="thumb rounded">
                         <div class="inner">
-                          <img src={{post.attributes.image.data[0].attributes.name}} alt="thumb" />
+                          <img src={{post.attributes.image.data[0].attributes.name}} height="300" width="300" alt="thumb" />
                         </div>
                       </div>
                     </a>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BlogDataService } from '../services/blog-data.service';
 
 @Component({
   selector: 'app-minimal',
@@ -22,13 +23,19 @@ export class MinimalComponent implements OnInit {
   page : number = 1;
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private blogData:BlogDataService) {}
 
   ngOnInit() {
 
-    this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
-      console.log(res)
-      this.data = res.data
-    })  
+    // this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
+    //   console.log(res)
+    //   this.data = res.data
+    // })  
+    this.getData()
   }
+  getData(){
+    this.blogData.getData().subscribe((res:any) =>{
+      this.data=res.data
+    })
+   }
 }

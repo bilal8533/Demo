@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HttpClient } from '@angular/common/http';
+import { BlogDataService } from '../services/blog-data.service';
 
 @Component({
   selector: 'app-personal',
@@ -21,7 +22,7 @@ export class PersonalComponent implements OnInit {
    
     responsive: {
       0: {
-        items: 1
+        items: 2
       },
       400: {
         items: 2
@@ -49,14 +50,20 @@ export class PersonalComponent implements OnInit {
   totalLength:any;
   page:number = 1; 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private blogData:BlogDataService) { }
 
   ngOnInit(): void {
 
-    this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
-      console.log(res)
-      this.data = res.data
-    })  
+    // this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
+    //   console.log(res)
+    //   this.data = res.data
+    // })  
+    this.getData()
   }
 
+  getData(){
+    this.blogData.getData().subscribe((res:any) =>{
+      this.data=res.data
+    })
+   }
 }

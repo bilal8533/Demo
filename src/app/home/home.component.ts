@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HttpClient } from '@angular/common/http';
+import { BlogDataService } from '../services/blog-data.service';
 
 
 @Component({
@@ -47,25 +48,22 @@ export class HomeComponent implements OnInit {
   totalLength:any;
   page:number = 1;
 
-  constructor(private http: HttpClient) { }
-
-  
-
+  constructor(private http: HttpClient,private blogData:BlogDataService) { }
 
   test(eve:any){
     this.routedata = eve
   }
-
   ngOnInit() {
-
-    this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
-      console.log(res)
-      this.data = res.data
-
-
-      // this.totalLength = result.length; 
-      // console.log(this.data)
-    })  
-
+    // this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
+    //   console.log(res)
+    //   this.data = res.data
+    // })  
+    this.getData()
    }
+    getData(){
+    this.blogData.getData().subscribe((res:any) =>{
+      this.data=res.data
+    })
+   }
+
   }

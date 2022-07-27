@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { BlogDataService } from '../services/blog-data.service';
 
 
 @Component({
@@ -10,8 +11,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class BlogSingleAltComponent implements OnInit {
 
-   customOptions: OwlOptions = {
-    
+  customOptions: OwlOptions = {
+
     loop: true,
     mouseDrag: false,
     touchDrag: false,
@@ -29,7 +30,7 @@ export class BlogSingleAltComponent implements OnInit {
       740: {
         items: 3
       },
-      
+
     },
     nav: true
   }
@@ -41,19 +42,24 @@ export class BlogSingleAltComponent implements OnInit {
   author: any;
   image: any[0];
   date: any;
-  data : any[0];
+  data: any[0];
   image1: any[0];
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private blogData: BlogDataService) { }
 
-  
+
   ngOnInit() {
 
-    this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
-      console.log(res)
+    // this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
+    //   console.log(res)
+    //   this.data = res.data
+    // })  
+    this.getData()
+  }
+  getData() {
+    this.blogData.getData().subscribe((res: any) => {
       this.data = res.data
-      // console.log(this.data)
-    })  
+    })
   }
 }

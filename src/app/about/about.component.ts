@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HttpClient } from '@angular/common/http';
+import { BlogDataService } from '../services/blog-data.service';
 
 @Component({
   selector: 'app-about',
@@ -44,14 +45,20 @@ export class AboutComponent implements OnInit {
   data : any[0];
   image1: any[0];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private blogData:BlogDataService) { }
 
   ngOnInit() {
 
-    this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
-      console.log(res)
-      this.data = res.data
-      // console.log(this.data)
-    })  
+    // this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
+    //   console.log(res)
+    //   this.data = res.data
+      
+    // })  
+     this.getData()
   }
+  getData(){
+    this.blogData.getData().subscribe((res:any) =>{
+      this.data=res.data
+    })
+   }
 }

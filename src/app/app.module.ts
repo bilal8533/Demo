@@ -30,7 +30,7 @@ import { AboutComponent } from './about/about.component';
 import { PreloaderComponent } from './preloader/preloader.component';
 import { PopularpostComponent } from './shared/popularpost/popularpost.component';
 import { CelebrationComponent } from './shared/celebration/celebration.component';
-
+import { BlogDataService } from './services/blog-data.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,7 @@ import { CelebrationComponent } from './shared/celebration/celebration.component
     NgxPaginationModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ BlogDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
