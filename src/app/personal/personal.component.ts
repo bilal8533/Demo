@@ -10,32 +10,25 @@ import { BlogDataService } from '../services/blog-data.service';
 })
 export class PersonalComponent implements OnInit {
 
-
-  customOptions: OwlOptions = {
-    
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
+  customOptions: OwlOptions = {    
+    loop: false,
+    dots: true,
     navSpeed: 700,
    
     responsive: {
       0: {
-        items: 2
+        items: 3
       },
       400: {
-        items: 2
+        items: 3
       },
       740: {
         items: 3
       },
-      1200: {
-        items: 4
+      940: {
+        items: 3
       }
-      
-    },
-    
+    }  
   }
 
   id: any[0];

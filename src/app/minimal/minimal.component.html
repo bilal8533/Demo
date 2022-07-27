@@ -2,11 +2,12 @@
 <div class="site-wrapper">
     <div class="main-overlay"></div>
 
+    <div class="container-xl"></div>
     <!--header-->
     <header class="header-minimal">
         <div class="row align-items-center">
 
-            <div class="col-4 text-center">
+            <div class="col-4">
                 <button class="burger-menu icon-button">
                     <span class="burger-icon"></span>
                 </button>
@@ -14,7 +15,7 @@
 
             <div class="col-4 text-center">
                 <!-- site logo -->
-                <a class="navbar-brand" routerLink="minimal">
+                <a class="navbar-brand" routerLink="/minimal">
                     <img src="assets/images/logo.svg" alt="logo" /></a>
             </div>
 
@@ -23,18 +24,17 @@
                     <i class="icon-magnifier"></i>
                 </button>
             </div>
-
         </div>
-
     </header>
+</div>
 
     <!-- section main content -->
     <section class="main-content-lg">
         <div class="container-minimal">
             <!-- post -->
             <div class="post post-xl" *ngFor="let post of data.slice(55,59) | paginate: {itemsPerPage:2,
-                currentPage: page,
-              totalItems:totalLength }">
+                                                         currentPage: page,
+                                                        totalItems:totalLength }">
                 <!-- top section -->
                 <div class="post-top">
                     <ul class="meta list-inline mb-0">

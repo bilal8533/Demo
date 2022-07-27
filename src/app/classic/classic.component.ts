@@ -10,29 +10,24 @@ import { BlogDataService } from '../services/blog-data.service';
 })
 export class ClassicComponent implements OnInit {
   
-  
-  customOptions: OwlOptions = {
-    
+    customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
+    // mouseDrag: false,
+    // touchDrag: false,
+    // pullDrag: false,
+    dots: true,
     navSpeed: 700,
-    navText: ['', ''],
     responsive: {
       0: {
         items: 1
       },
       400: {
-        items: 2
+        items: 1
       },
       740: {
-        items: 3
-      },
-      
-    },
-    nav: true
+        items: 1
+      },    
+    }
   }
 
   id: any[0];
@@ -44,6 +39,8 @@ export class ClassicComponent implements OnInit {
   date: any;
   data : any[0];
   image1: any[0];
+  totalLength:any;
+  page:number = 1;
 
   constructor(private http: HttpClient, private blogData:BlogDataService) {}
 

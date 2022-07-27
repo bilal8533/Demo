@@ -1,18 +1,12 @@
-
-
 <!-- site wrapper -->
 <div class="site-wrapper">
-
 	<div class="main-overlay"></div>
-
 	<!-- header -->
 	<header class="header-classic">
-
 		<div class="container-xl">
 			<!-- header top -->
 			<div class="header-top">
 				<div class="row align-items-center">
-
 					<div class="col-md-4 col-xs-12">
 						<!-- site logo -->
 						<a class="navbar-brand" routerLink="/classic"><img src="assets/images/logo.svg" alt="logo" /></a> 
@@ -29,7 +23,6 @@
 							<li class="list-inline-item"><a routerLink="#"><i class="fab fa-youtube"></i></a></li>
 						</ul>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -37,7 +30,6 @@
 		<nav class="navbar navbar-expand-lg">
 			<!-- header bottom -->
 			<div class="header-bottom  w-100">
-				
 				<div class="container-xl">
 					<div class="d-flex align-items-center">
 						<div class="collapse navbar-collapse flex-grow-1">
@@ -86,17 +78,37 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</nav>
-
 </header>
 
     <section class="hero-carousel">
         <div class="container-xl">
             <div class="post-carousel-lg">
                 <!-- post -->
-                <div class="post featured-post-xl">
+				<owl-carousel-o [options]="customOptions">
+					<ng-container *ngFor="let post of data.slice(59,61)">
+					  <ng-template carouselSlide [id]="data.id">
+						<div class="post featured-post-xl">
+							<div class="details clearfix">
+								<a routerLink="/category" class="category-badge lg">{{post.attributes.category.data.attributes.title}}</a>
+								<h4 class="post-title"><a [routerLink]="['/blog-single',data[59].id]">{{post.attributes.heading}}</a></h4>
+								<ul class="meta list-inline mb-0">
+									<li class="list-inline-item"><a routerLink="#">{{post.attributes.author}}</a></li>
+									<li class="list-inline-item">{{post.attributes.date}}</li>
+								</ul>
+							</div>
+							<a [routerLink]="['/blog-single',post.id]">
+								<div class="thumb rounded">
+									<!-- <div class="inner data-bg-image" data-bg-image="assets/images/posts/featured-xl-1.jpg"></div> -->
+									<img src={{post.attributes.image.data[0].attributes.name}}>
+								</div>
+							</a>
+						</div>						
+					  </ng-template>
+					</ng-container>
+			  </owl-carousel-o>
+                <!-- <div class="post featured-post-xl">
                     <div class="details clearfix">
                         <a routerLink="/category" class="category-badge lg">{{data[59].attributes.category.data.attributes.title}}</a>
                         <h4 class="post-title"><a [routerLink]="['/blog-single',data[59].id]">{{data[59].attributes.heading}}</a></h4>
@@ -110,9 +122,9 @@
                             <div class="inner data-bg-image" data-bg-image="assets/images/posts/featured-xl-1.jpg"></div>
                         </div>
                     </a>
-                </div>
+                </div> -->
                 <!-- post -->
-                <div class="post featured-post-xl">
+                <!-- <div class="post featured-post-xl">
                     <div class="details clearfix">
                         <a routerLink="/category" class="category-badge lg">{{data[60].attributes.category.data.attributes.title}}</a>
                         <h4 class="post-title"><a [routerLink]="['/blog-single',data[60].id]">{{data[60].attributes.heading}}</a></h4>
@@ -126,7 +138,7 @@
                             <div class="inner data-bg-image" data-bg-image="assets/images/posts/featured-xl-2.jpg"></div>
                         </div>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -134,13 +146,12 @@
 	<!-- section main content -->
 	<section class="main-content">
 		<div class="container-xl">
-
 			<div class="row gy-4">
-
 				<div class="col-lg-8">
-
 					<!-- post -->
-					<div class="post post-classic rounded bordered" *ngFor="let post of data.slice(61,65)">
+					<div class="post post-classic rounded bordered" *ngFor="let post of data.slice(61,65) | paginate: {itemsPerPage:2,
+				                                                                                	         	currentPage: page,
+				                                                                                   	         	totalItems:totalLength }">
 						<div class="thumb top-rounded">
 							<a routerLink="/category" class="category-badge lg position-absolute">{{post.attributes.category.data.attributes.title}}</a>
 							<span class="post-format">
@@ -181,30 +192,19 @@
 								<a [routerLink]="['/blog-single',post.id]"><span class="icon-options"></span></a>
 							</div>
 						</div>
-					</div>
+					</div>				
+					<pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
 
-				
-
-					<nav>
-						<ul class="pagination justify-content-center">
-							<li class="page-item active" aria-current="page">
-								<span class="page-link">1</span>
-							</li>
-							<li class="page-item"><a class="page-link" routerLink="#">2</a></li>
-							<li class="page-item"><a class="page-link" routerLink="#">3</a></li>
-						</ul>
-					</nav>
-
+					
 				</div>
 				<div class="col-lg-4">
-
 					<!-- sidebar -->
 					<div class="sidebar">
 						<!-- widget about -->
 						<div class="widget rounded">
 							<div class="widget-about data-bg-image text-center" data-bg-image="assets/images/map-bg.png">
-								<img src="assets/images/logo.svg" alt="logo" class="mb-4" />
-								<p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
+								<img src={{data[29].attributes?.image?.data[0]?.attributes?.name}} alt="logo" class="mb-4" />
+                                 <p class="mb-4"> {{data[29]?.attributes?.description}}
 								<ul class="social-icons list-unstyled list-inline mb-0">
 									<li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a></li>
 									<li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a></li>
@@ -217,32 +217,7 @@
 						</div>
 
 						<!-- widget popular posts -->
-						<div class="widget rounded">
-							<div class="widget-header text-center">
-								<h3 class="widget-title">Popular Posts</h3>
-								<img src="assets/images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<!-- post -->
-				
-								<div class="post post-list-sm circle" *ngFor="let post of data.slice(21,24)">
-								  <div class="thumb circle">
-									<!-- <span class="number">1</span> -->
-									<a [routerLink]="['/blog-single',post.id]">
-									  <div class="inner">
-										<img src={{post?.attributes?.image.data[0].attributes.name}} alt="post-title" />
-									  </div>
-									</a>
-								  </div>
-								  <div class="details clearfix">
-									<h6 class="post-title my-0"><a [routerLink]="['/blog-single',post.id]">{{post?.attributes?.heading}}</a></h6>
-									<ul class="meta list-inline mt-1 mb-0">
-									  <li class="list-inline-item">{{post?.attributes?.date}}</li>
-									</ul>
-								  </div>
-								</div>
-							  </div>
-						</div>
+						<app-popularpost></app-popularpost>
 
 						<!-- widget categories -->
 						<div class="widget rounded">
@@ -259,8 +234,7 @@
 									<li><a routerLink="#">Trending</a><span>(7)</span></li>
 									<li><a routerLink="#">Culture</a><span>(3)</span></li>
 								</ul>
-							</div>
-							
+							</div>							
 						</div>
 
 						<!-- widget newsletter -->
@@ -282,69 +256,7 @@
 						</div>
 
 						<!-- widget post carousel -->
-						<div class="widget rounded">
-							<div class="widget-header text-center">
-								<h3 class="widget-title">Celebration</h3>
-								<img src="assets/images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<div class="post-carousel-widget">
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="thumb rounded">
-											<a routerLink="/category" class="category-badge position-absolute">How to</a>
-											<a routerLink="/blog-single">
-												<div class="inner">
-													<img src="assets/images/widgets/widget-carousel-1.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="post-title mb-0 mt-4"><a routerLink="blog-single">5 Easy Ways You Can Turn Future Into Success</a></h5>
-										<ul class="meta list-inline mt-2 mb-0">
-											<li class="list-inline-item"><a routerLink="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="thumb rounded">
-											<a routerLink="/category" class="category-badge position-absolute">Trending</a>
-											<a routerLink="blog-single">
-												<div class="inner">
-													<img src="assets/images/widgets/widget-carousel-2.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="post-title mb-0 mt-4"><a routerLink="blog-single">Master The Art Of Nature With These 7 Tips</a></h5>
-										<ul class="meta list-inline mt-2 mb-0">
-											<li class="list-inline-item"><a routerLink="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="thumb rounded">
-											<a routerLink="/category" class="category-badge position-absolute">How to</a>
-											<a routerLink="blog-single">
-												<div class="inner">
-													<img src="assets/images/widgets/widget-carousel-1.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="post-title mb-0 mt-4"><a routerLink="blog-single">5 Easy Ways You Can Turn Future Into Success</a></h5>
-										<ul class="meta list-inline mt-2 mb-0">
-											<li class="list-inline-item"><a routerLink="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- carousel arrows -->
-								<div class="slick-arrows-bot">
-									<button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
-									<button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i class="icon-arrow-right"></i></button>
-								</div>
-							</div>		
-						</div>
+						<app-celebration></app-celebration>
 
 						<!-- widget advertisement -->
 						<div class="widget no-container rounded text-md-center">
@@ -368,14 +280,8 @@
 								<a routerLink="#" class="tag">#Celebrities</a>
 							</div>		
 						</div>
-
 					</div>
-
 				</div>
-
 			</div>
-
 		</div>
-	</section>
-
-	
+	</section>	

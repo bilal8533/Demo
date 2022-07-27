@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
@@ -9,7 +10,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CelebrationComponent implements OnInit {
 
-  
+  customOptions: OwlOptions = {    
+    loop: true,
+    dots: true,
+    navSpeed: 700,
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 1
+      }
+    }
+  }
+
   id: any[0];
   title: any[0];
   heading: any;
@@ -22,13 +39,10 @@ export class CelebrationComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-
     this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
       console.log(res)
       this.data = res.data
       // console.log(this.data)
     })  
-
    }
-
 }

@@ -244,12 +244,12 @@
           <div class="section-header">
             <h3 class="section-title">Inspiration</h3>
             <img src="assets/images/wave.svg" class="wave" alt="wave" />
-            <div class="slick-arrows-top">
+            <!-- <div class="slick-arrows-top">
               <button type="button" data-role="none" class="carousel-topNav-prev slick-custom-buttons"
                 aria-label="Previous"><i class="icon-arrow-left"></i></button>
               <button type="button" data-role="none" class="carousel-topNav-next slick-custom-buttons"
                 aria-label="Next"><i class="icon-arrow-right"></i></button>
-            </div>
+            </div> -->
           </div>
 
           <div class="row post-carousel-twoCol post-carousel">
@@ -272,21 +272,21 @@
               </a>
             </div> -->
             <div class="post post-over-content col-md-6">
-              <owl-carousel-o [options]="customOptions" height="150">
+              <owl-carousel-o [options]="customOptions">
                 <ng-container *ngFor="let post of data.slice(18,21)">
                   <ng-template carouselSlide [id]="data.id">
                    <div class="details clearfix">
-                      <a routerLink="/category" class="category-badge">{{post.attributes.title}}</a>
+                      <a routerLink="/category" class="category-badge">{{post?.attributes?.category?.data?.attributes?.title}}</a>
                       <h4 class="post-title"><a [routerLink]="['/blog-single',post.id]">{{post.attributes.heading}}</a></h4>
                       <ul class="meta list-inline mb-0">
-                        <li class="list-inline-item"><a routerLink="#">{{post.attributes.author}}</a></li>
-                        <li class="list-inline-item">{{post.attributes.date}}</li>
+                        <li class="list-inline-item"><a routerLink="#">{{post?.attributes?.author}}</a></li>
+                        <li class="list-inline-item">{{post?.attributes?.date}}</li>
                       </ul>
                     </div>
                     <a [routerLink]="['/blog-single',post.id]">
                       <div class="thumb rounded">
                         <div class="inner">
-                          <img src={{post.attributes.image.data[0].attributes.name}} height="300" width="300" alt="thumb" />
+                          <img src={{post.attributes.image.data[0].attributes.name}}  alt="thumb" />
                         </div>
                       </div>
                     </a>
@@ -294,8 +294,6 @@
                 </ng-container>
               </owl-carousel-o>
             </div>
-
-
           </div>
 
           <div class="spacer" data-height="50"></div>

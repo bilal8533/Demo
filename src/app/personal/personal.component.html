@@ -87,11 +87,14 @@
     <section class="hero-carousel">
         <div class="row post-carousel-featured post-carousel">
             <!-- post -->
+            
+               
               <owl-carousel-o [options]="customOptions">
                     <ng-container *ngFor="let post of data.slice(30,36)">
                         <ng-template carouselSlide [id]="data.id">
+                            <div class="post featured-post-md">
                         <div class="details clearfix">
-                            <a routerLink="/category" class="category-badge">{{post?.attributes?.category?.data?.attributes.title}}</a>
+                            <a routerLink="/category" class="category-badge">{{post?.attributes?.category?.data?.attributes?.title}}</a>
                             <h4 class="post-title"><a [routerLink]="['/blog-single',post.id]">{{post?.attributes?.heading}}</a>
                             </h4>
                             <ul class="meta list-inline mb-0">
@@ -101,12 +104,13 @@
                         </div>
                         <a [routerLink]="['/blog-single',post.id]">
                             <div class="thumb rounded">
-                                <img src={{post?.attributes?.image?.data[0].attributes.name}} />
+                                <img src={{post?.attributes?.image?.data[0].attributes?.name}} />
                             </div>
                         </a>
+                    </div>
                          </ng-template>
                     </ng-container>
-                </owl-carousel-o>
+               </owl-carousel-o>
             <!-- <div class="post featured-post-md">
                 <div class="details clearfix">
                     <a routerLink="/category" class="category-badge">{{data[30].attributes?.category?.data?.attributes.title}}</a>
@@ -125,7 +129,7 @@
             </div> -->
 
              <!-- post -->
-             <!-- <div class="post featured-post-md">
+              <!-- <div class="post featured-post-md">
                 <div class="details clearfix">
                     <a routerLink="/category" class="category-badge">{{data[31].attributes?.category?.data?.attributes.title}}</a>
                     <h4 class="post-title"><a  [routerLink]="['/blog-single',data[31].id]">{{data[31]?.attributes?.heading}}</a>
@@ -140,7 +144,8 @@
                         <img src={{data[31]?.attributes?.image?.data[0]?.attributes.name}} />
                     </div>
                 </a>
-            </div>            -->
+            </div>   -->
+            
         </div>
     </section>
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+
 
 @Component({
   selector: 'app-popularpost',
@@ -7,6 +9,24 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./popularpost.component.css']
 })
 export class PopularpostComponent implements OnInit {
+
+  customOptions: OwlOptions = {
+    
+    loop: true,
+    dots: true,
+    navSpeed: 700,
+    responsive: {
+      0: {
+        items: 2
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      }
+    }
+  }
 
   id: any[0];
   title: any[0];
