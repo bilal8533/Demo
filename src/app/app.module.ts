@@ -31,6 +31,8 @@ import { PreloaderComponent } from './preloader/preloader.component';
 import { PopularpostComponent } from './shared/popularpost/popularpost.component';
 import { CelebrationComponent } from './shared/celebration/celebration.component';
 import { BlogDataService } from './services/blog-data.service';
+import { TagsComponent } from './shared/tags/tags.component';
+import { SponsoredadComponent } from './shared/sponsoredad/sponsoredad.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { BlogDataService } from './services/blog-data.service';
     AboutComponent,
     PreloaderComponent,
     PopularpostComponent,
-    CelebrationComponent
+    CelebrationComponent,
+    TagsComponent,
+    SponsoredadComponent
   ],
   imports: [
     BrowserModule,

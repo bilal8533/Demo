@@ -48,7 +48,11 @@ export class HomeComponent implements OnInit {
     this.routedata = eve
   }
   ngOnInit() {
-    // this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{
+    this.http.get('http://localhost:1337/api/categories?populate=*').subscribe((res:any)=>{
+      console.log(res)    
+    })
+
+    // this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{/:id
     //   console.log(res)
     //   this.data = res.data
     // })  

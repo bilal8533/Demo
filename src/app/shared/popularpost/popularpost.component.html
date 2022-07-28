@@ -7,9 +7,9 @@
   <div class="widget-content">
     <!-- post -->
 
-    <div class="post post-list-sm circle" *ngFor="let post of data.slice(21,24)">
+    <div class="post post-list-sm circle" *ngFor="let post of data.slice(47,50)">
       <div class="thumb circle">
-        <!-- <span class="number">1</span> -->
+        <span class="number">{{post?.attributes.title}}</span>
         <a [routerLink]="['/blog-single',post.id]">
           <div class="inner">
             <img src={{post?.attributes?.image.data[0].attributes.name}} alt="post-title" />

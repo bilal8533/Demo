@@ -20,11 +20,13 @@ import { PersonalAltComponent } from './personal-alt/personal-alt.component';
 import { PreloaderComponent } from './preloader/preloader.component';
 import { PopularpostComponent } from './shared/popularpost/popularpost.component';
 import { CelebrationComponent } from './shared/celebration/celebration.component';
+import { TagsComponent } from './shared/tags/tags.component';
+import { SponsoredadComponent } from './shared/sponsoredad/sponsoredad.component';
 
 
 const routes: Routes = [
 
-  {path: '', redirectTo:'/home', pathMatch: 'full'},
+  {path: '', redirectTo:'home', pathMatch: 'full'},
   {path: 'header',component: HeaderComponent},
   {path: 'preloader',component: PreloaderComponent},
   {path: 'home', component: HomeComponent},
@@ -43,7 +45,9 @@ const routes: Routes = [
   {path: 'contact',component: ContactComponent},
   {path: 'footer',component: FooterComponent},
   {path: 'popularpost',component:PopularpostComponent},
-  {path: 'celebration',component:CelebrationComponent}
+  {path: 'celebration',component:CelebrationComponent},
+  {path: 'tags',component:TagsComponent},
+  {path: 'sponsoredad',component:SponsoredadComponent}
 ];
 
 @NgModule({

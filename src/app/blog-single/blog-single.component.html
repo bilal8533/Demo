@@ -15,7 +15,7 @@
                 </ol>
             </nav>
 
-            <div class="row gy-4">
+            <div class="row gy-4">  
 
                 <div class="col-lg-8">
                     <!-- post single -->
@@ -23,22 +23,22 @@
                         <!-- post header -->
                         <div class="post-header">
                             <h1 class="title mt-0 mb-3">{{data?.attributes?.heading}}</h1>
+                            <p class="title mt-0 mb-3">{{data?.attributes?.title}}</p>
                             <ul class="meta list-inline mb-0">
                                 <li class="list-inline-item">
                                     <a routerLink="#">
-                                        <img src={{data?.attributes?.image?.data[0]?.attributes.name}} class="author" alt="author" />{{data?.attributes?.author}}</a></li>
+                                        <img src={{data?.attributes?.image?.data[0]?.attributes?.name}} class="author" alt="author" />{{data?.attributes?.author}}</a></li>
                                 <li class="list-inline-item"><a routerLink="#">{{data?.attributes?.category?.data?.attributes?.title}}</a></li>
                                 <li class="list-inline-item">{{data?.attributes?.date}}</li>
                             </ul>
                         </div>
                         <!-- featured image -->
-                        <div class="featured-image">
-                            <img src={{data?.attributes?.image1?.data?.attributes?.name}} alt="" />
-                        </div>
-                        <div>
-                            <p class="title mt-0 mb-3"><mark><strong>{{data?.attributes?.description}}</strong></mark></p>
-                        <!-- <p><strong>{{data?.attributes?.description}}</strong></p> -->
-                    </div>
+                       
+                        <!-- <div class="featured-image"><img src={{data?.attributes?.image1?.data[0]?.attributes.name}} alt="" /></div> -->
+                        <div class="title mt-0 mb-3"  input type="text">{{data?.attributes?.description}}</div>         
+                        <div> <a class="tags" routerLink="#">#{{data?.attributes?.tags?.data[0]?.attributes?.title}}</a></div>
+                        
+                        
                         <!-- post content -->
                         <!-- <div class="post-content clearfix">
                             <p>The European languages are members of the same family. Their separate existence is a
@@ -104,27 +104,19 @@
                                 <div class="col-md-6 col-12">
                                     <!-- social icons -->
                                     <ul class="social-icons list-unstyled list-inline mb-0 float-md-end">
-                                        <li class="list-inline-item"><a routerLink="#"><i
-                                                    class="fab fa-facebook-f"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i
-                                                    class="fab fa-twitter"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i
-                                                    class="fab fa-linkedin-in"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i
-                                                    class="fab fa-pinterest"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i
-                                                    class="fab fa-telegram-plane"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i
-                                                    class="far fa-envelope"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-telegram-plane"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i class="far fa-envelope"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="spacer" data-height="50"></div>
-
                     <div class="about-author padding-30 rounded">
                         <div class="thumb">
                             <img src="assets/images/other/avatar-about.png" alt="Katen Doe" />
@@ -230,7 +222,7 @@
                                             placeholder="Email address" required="required">
                                     </div>
                                 </div>
-
+                                
                                 <div class="column col-md-6">
                                     <!-- Name input -->
                                     <div class="form-group">
@@ -277,67 +269,7 @@
 						</div>
 
                         <!-- widget popular posts -->
-                        <div class="widget rounded">
-                            <div class="widget-header text-center">
-                                <h3 class="widget-title">Popular Posts</h3>
-                                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-                            </div>
-                            <div class="widget-content">
-                                <!-- post -->
-                                <div class="post post-list-sm circle">
-                                    <div class="thumb circle">
-                                        <span class="number">1</span>
-                                        <a routerLink="blog-single">
-                                            <div class="inner">
-                                                <img src="assets/images/posts/tabs-1.jpg" alt="post-title" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="details clearfix">
-                                        <h6 class="post-title my-0"><a routerLink="blog-single">3 Easy Ways To Make Your iPhone Faster</a></h6>
-                                        <ul class="meta list-inline mt-1 mb-0">
-                                            <li class="list-inline-item">29 March 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- post -->
-                                <div class="post post-list-sm circle">
-                                    <div class="thumb circle">
-                                        <span class="number">2</span>
-                                        <a routerLink="blog-single">
-                                            <div class="inner">
-                                                <img src="assets/images/posts/tabs-2.jpg" alt="post-title" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="details clearfix">
-                                        <h6 class="post-title my-0"><a routerLink="blog-single">An Incredibly Easy
-                                                Method That Works For All</a></h6>
-                                        <ul class="meta list-inline mt-1 mb-0">
-                                            <li class="list-inline-item">29 March 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- post -->
-                                <div class="post post-list-sm circle">
-                                    <div class="thumb circle">
-                                        <span class="number">3</span>
-                                        <a routerLink="blog-single">
-                                            <div class="inner">
-                                                <img src="assets/images/posts/tabs-3.jpg" alt="post-title" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="details clearfix">
-                                        <h6 class="post-title my-0"><a routerLink="blog-single">10 Ways To Immediately
-                                                Start Selling Furniture</a></h6>
-                                        <ul class="meta list-inline mt-1 mb-0">
-                                            <li class="list-inline-item">29 March 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <app-popularpost></app-popularpost>
 
                         <!-- widget categories -->
                         <div class="widget rounded">
@@ -379,101 +311,17 @@
                         </div>
 
                         <!-- widget post carousel -->
-                        <div class="widget rounded">
-							<div class="widget-header text-center">
-								<h3 class="widget-title">Celebration</h3>
-								<img src="assets/images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<div class="post-carousel-widget">
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="thumb rounded">
-											<a href="category.html" class="category-badge position-absolute">How to</a>
-											<a href="blog-single.html">
-												<div class="inner">
-													<img src="assets/images/widgets/widget-carousel-1.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="post-title mb-0 mt-4"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
-										<ul class="meta list-inline mt-2 mb-0">
-											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="thumb rounded">
-											<a href="category.html" class="category-badge position-absolute">Trending</a>
-											<a href="blog-single.html">
-												<div class="inner">
-													<img src="assets/images/widgets/widget-carousel-2.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="post-title mb-0 mt-4"><a href="blog-single">Master The Art Of Nature With These 7 Tips</a></h5>
-										<ul class="meta list-inline mt-2 mb-0">
-											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="thumb rounded">
-											<a href="category.html" class="category-badge position-absolute">How to</a>
-											<a href="blog-single.html">
-												<div class="inner">
-													<img src="assets/images/widgets/widget-carousel-1.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="post-title mb-0 mt-4"><a href="blog-single">5 Easy Ways You Can Turn Future Into Success</a></h5>
-										<ul class="meta list-inline mt-2 mb-0">
-											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- carousel arrows -->
-								<div class="slick-arrows-bot">
-									<button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
-									<button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i class="icon-arrow-right"></i></button>
-								</div>
-							</div>		
-						</div>
+                       <app-celebration></app-celebration>
+
                         <!-- widget advertisement -->
-                        <div class="widget no-container rounded text-md-center">
-                            <span class="ads-title">- Sponsored Ad -</span>
-                            <a routerLink="#" class="widget-ads">
-                                <img src="assets/images/ads/ad-360.png" alt="Advertisement" />
-                            </a>
-                        </div>
+                        <app-sponsoredad></app-sponsoredad>
 
                         <!-- widget tags -->
-                        <div class="widget rounded">
-                            <div class="widget-header text-center">
-                                <h3 class="widget-title">Tag Clouds</h3>
-                                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-                            </div>
-                            <div class="widget-content">
-                                <a routerLink="#" class="tag">#Trending</a>
-                                <a routerLink="#" class="tag">#Video</a>
-                                <a routerLink="#" class="tag">#Featured</a>
-                                <a routerLink="#" class="tag">#Gallery</a>
-                                <a routerLink="#" class="tag">#Celebrities</a>
-                            </div>
-                        </div>
+                       <app-tags></app-tags>
 
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </section>
-
-
 </div>
-

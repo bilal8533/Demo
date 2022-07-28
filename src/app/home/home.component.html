@@ -199,10 +199,11 @@
                   <p class="excerpt mb-0">{{post.attributes.description}}</p>
                 </div>
                 <!-- post -->
+
                 <div class="post post-list-sm square before-seperator" *ngFor="let post of data.slice(13,17)">
                   <div class="thumb rounded">
                     <a [routerLink]="['/blog-single',post.id]">
-                      <div class="inner">
+                      <div class="inner">  
                         <img src={{post?.attributes?.image?.data[0].attributes.name}} alt="post-title" />
                       </div>
                     </a>
@@ -306,7 +307,7 @@
 
           <div class="padding-30 rounded bordered">
             <div class="row">
-              <div class="col-md-12 col-sm-6" *ngFor="let post of data.slice(0,4) | paginate: {itemsPerPage:2,
+              <div class="col-md-12 col-sm-6" *ngFor="let post of data.slice(0,4) | paginate: {itemsPerPage:4,
                                                    currentPage: page,
                                                    totalItems:totalLength }">
                                                   
@@ -320,14 +321,14 @@
                     </span>
                     <a [routerLink]="['/blog-single',post.id]">
                       <div class="inner">
-                        <img src={{post?.attributes?.image1?.data[0].attributes.name}} alt="post-title" />
+                        <img src={{post?.attributes?.image?.data[0]?.attributes.name}} alt="post-title" />
                       </div>
                     </a>
                   </div>
                   <div class="details">
                     <ul class="meta list-inline mb-3">
                       <li class="list-inline-item"><a routerLink="#">
-                        <img src={{post?.attributes?.image?.data[0].attributes.name}} class="author"alt="author" />{{post.attributes.author}}</a></li>
+                        <img src={{post?.attributes?.image1?.data[0].attributes.name}} class="author"alt="author" />{{post.attributes.author}}</a></li>
                       <li class="list-inline-item"><a routerLink="#">{{post?.attributes?.category?.data.attributes.title}}</a></li>
                       <li class="list-inline-item">{{post.attributes.date}}</li>
                     </ul>
@@ -427,27 +428,10 @@
             <app-celebration></app-celebration>
 
             <!-- widget advertisement -->
-            <div class="widget no-container rounded text-md-center">
-              <span class="ads-title">{{data[17].attributes.title}}</span>
-              <a routerLink="#" class="widget-ads">
-                <img src={{data[17].attributes.image.data[0].attributes.name}} alt="Advertisement" />
-              </a>
-            </div>
+            <app-sponsoredad></app-sponsoredad>
 
             <!-- widget tags -->
-            <div class="widget rounded">
-              <div class="widget-header text-center">
-                <h3 class="widget-title">Tag Clouds</h3>
-                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-              </div>
-              <div class="widget-content">
-                <a routerLink="#" class="tag">#Trending</a>
-                <a routerLink="#" class="tag">#Video</a>
-                <a routerLink="#" class="tag">#Featured</a>
-                <a routerLink="#" class="tag">#Gallery</a>
-                <a routerLink="#" class="tag">#Celebrities</a>
-              </div>
-            </div>
+           <app-tags></app-tags>
           </div>
         </div>
       </div>
