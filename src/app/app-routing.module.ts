@@ -22,6 +22,7 @@ import { PopularpostComponent } from './shared/popularpost/popularpost.component
 import { CelebrationComponent } from './shared/celebration/celebration.component';
 import { TagsComponent } from './shared/tags/tags.component';
 import { SponsoredadComponent } from './shared/sponsoredad/sponsoredad.component';
+import { ExploreComponent } from './shared/explore/explore.component';
 
 
 const routes: Routes = [
@@ -47,7 +48,8 @@ const routes: Routes = [
   {path: 'popularpost',component:PopularpostComponent},
   {path: 'celebration',component:CelebrationComponent},
   {path: 'tags',component:TagsComponent},
-  {path: 'sponsoredad',component:SponsoredadComponent}
+  {path: 'sponsoredad',component:SponsoredadComponent},
+  {path: 'explore',component:ExploreComponent}
 ];
 
 @NgModule({

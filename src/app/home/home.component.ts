@@ -41,22 +41,21 @@ export class HomeComponent implements OnInit {
   routedata:any;
   totalLength:any;
   page:number = 1;
+  categoryData:any;
 
   constructor(private http: HttpClient,private blogData:BlogDataService) { }
-
-  test(eve:any){
-    this.routedata = eve
-  }
+  
+  // test(eve:any){
+  //   this.routedata = eve
+  // }
   ngOnInit() {
+    
     this.http.get('http://localhost:1337/api/categories?populate=*').subscribe((res:any)=>{
-      console.log(res)    
+      this.categoryData = res.data
     })
 
-    // this.http.get('http://localhost:1337/api/posts?populate=*').subscribe((res : any) =>{/:id
-    //   console.log(res)
-    //   this.data = res.data
-    // })  
-    this.getData()
+
+    this.getData()  
    }
     getData(){
     this.blogData.getData().subscribe((res:any) =>{
@@ -65,3 +64,4 @@ export class HomeComponent implements OnInit {
    }
 
   }
+               

@@ -85,51 +85,10 @@
                         </div>
 
                         <!-- widget popular posts -->
-                        <div class="widget rounded">
-                            <div class="widget-header text-center">
-                                <h3 class="widget-title">Popular Posts</h3>
-                                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-                            </div>
-                            <div class="widget-content">
-                                <!-- post -->
-                                <div class="post post-list-sm circle" *ngFor="let post of data.slice(47,50)">
-                                    <div class="thumb circle">
-                                        <span class="number">{{post.attributes.title}}</span>
-                                        <a routerLink="blog-single">
-                                            <div class="inner">
-                                                <img src={{post.attributes.image.data[0].attributes.name}} alt="post-title" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="details clearfix">
-                                        <h6 class="post-title my-0"><a routerLink="blog-single">{{post.attributes.heading}}</a></h6>
-                                        <ul class="meta list-inline mt-1 mb-0">
-                                            <li class="list-inline-item">{{post.attributes.date}}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
+                        <app-popularpost></app-popularpost>
 
                         <!-- widget categories -->
-                        <div class="widget rounded">
-                            <div class="widget-header text-center">
-                                <h3 class="widget-title">Explore Topics</h3>
-                                <img src="assets/images/wave.svg" class="wave" alt="wave" />
-                            </div>
-                            <div class="widget-content">
-                                <ul class="list">
-                                    <li><a routerLink="#">Lifestyle</a><span>(5)</span></li>
-                                    <li><a routerLink="#">Inspiration</a><span>(2)</span></li>
-                                    <li><a routerLink="#">Fashion</a><span>(4)</span></li>
-                                    <li><a routerLink="#">Politic</a><span>(1)</span></li>
-                                    <li><a routerLink="#">Trending</a><span>(7)</span></li>
-                                    <li><a routerLink="#">Culture</a><span>(3)</span></li>
-                                </ul>
-                            </div>
-
-                        </div>
+                        <app-explore></app-explore>
 
                         <!-- widget newsletter -->
                         <div class="widget rounded">

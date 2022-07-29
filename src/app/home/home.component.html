@@ -387,23 +387,20 @@
             <app-popularpost></app-popularpost>
 
             <!-- widget categories -->
-            <div class="widget rounded">
+            <app-explore></app-explore>
+            <!-- <div class="widget rounded">
               <div class="widget-header text-center">
                 <h3 class="widget-title">Explore Topics</h3>
                 <img src="assets/images/wave.svg" class="wave" alt="wave" />
               </div>
-              <div class="widget-content">
-                <ul class="list">
-                  <li><a routerLink="#">Lifestyle</a><span>(5)</span></li>
-                  <li><a routerLink="#">Inspiration</a><span>(2)</span></li>
-                  <li><a routerLink="#">Fashion</a><span>(4)</span></li>
-                  <li><a routerLink="#">Politic</a><span>(1)</span></li>
-                  <li><a routerLink="#">Trending</a><span>(7)</span></li>
-                  <li><a routerLink="#">Culture</a><span>(3)</span></li>
+              <div class="widget-content" >
+                <ul class="list" *ngFor="let data of categoryData">
+                  <li><a routerLink="#">{{data.attributes.title}}</a>
+                    <span>({{data.attributes.posts.data.length}})</span></li>                 
                 </ul>
               </div>
 
-            </div>
+            </div> -->
 
             <!-- widget newsletter -->
             <div class="widget rounded">

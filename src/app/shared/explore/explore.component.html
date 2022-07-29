@@ -1,0 +1,13 @@
+ <!-- widget categories -->
+ <div class="widget rounded">
+    <div class="widget-header text-center">
+      <h3 class="widget-title">Explore Topics</h3>
+      <img src="assets/images/wave.svg" class="wave" alt="wave" />
+    </div>
+    <div class="widget-content" >
+      <ul class="list" *ngFor="let data of categoryData">
+        <li><a routerLink="#">{{data.attributes.title}}</a>
+          <span>({{data.attributes.posts.data.length}})</span></li>                 
+      </ul>
+    </div>
+  </div>
