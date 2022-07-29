@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ActivatedRoute } from '@angular/router';
@@ -10,15 +11,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BlogSingleComponent implements OnInit {
 
+
+
   customOptions: OwlOptions = {
-    
     loop: true,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
     dots: true,
     navSpeed: 700,
-    
+
     responsive: {
       0: {
         items: 2
@@ -29,7 +31,7 @@ export class BlogSingleComponent implements OnInit {
       740: {
         items: 3
       },
-      
+
     },
     nav: true
   }
@@ -41,18 +43,47 @@ export class BlogSingleComponent implements OnInit {
   author: any;
   image: any[0];
   date: any;
-  data : any;
+  data: any;
   image1: any[0];
+  comment: any;
 
 
-  constructor(private http: HttpClient, private activatedRoute:ActivatedRoute) { }
 
-  
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private fb: FormBuilder) {
+
+    this.comment = new FormGroup({
+      "description": new FormControl(null, Validators.required),
+      "email": new FormControl(null, [Validators.required, Validators.email]),
+      "website": new FormControl(null, Validators.required),
+      "name": new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')])
+    })
+  }
+
+
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id')
-    this.http.get('http://localhost:1337/api/posts/' + this.id + '?populate=*').subscribe((res : any) =>{
-      this.data = res.data 
+    this.http.get('http://localhost:1337/api/posts/' + this.id + '?populate=*').subscribe((res: any) => {
+      this.data = res.data
       console.log(this.data)
-    })  
+    })
   }
+
+
+  send() {
+    console.log(this.comment.value)
+    let data = {
+      "description": this.dscription.value,
+      "email": this.email.value,
+      "website": this.website.value,
+      "name": this.name.value
+    }
+    this.http.post('http://localhost:1337/api/comments', { data }).subscribe(function (res) {
+      console.log(res)
+    })
+  }
+
+  get dscription() { return this.comment.get('description'); }
+  get email() { return this.comment.get('email'); }
+  get website() { return this.comment.get('website'); }
+  get name() { return this.comment.get('name'); }
 }
