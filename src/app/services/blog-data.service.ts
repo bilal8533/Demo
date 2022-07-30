@@ -5,14 +5,12 @@ import { HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class BlogDataService {
-
-  url= 'http://localhost:1337/api/posts?populate=*';
   
+  // url= 'http://localhost:1337/api/posts?populate=*'; 
   constructor(private http: HttpClient) { }
-
   getData( )
   {
-    return this.http.get(this.url)
-  } 
-  
+    return this.http.get('http://localhost:1337/api/posts?populate=*')
+  }   
+
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { BlogDataService } from '../services/blog-data.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +11,7 @@ export class ContactComponent implements OnInit {
   contact: any;
   id: any;
 
-  constructor(private http : HttpClient, private fb : FormBuilder,private blogData:BlogDataService) { 
+  constructor(private http : HttpClient, private fb : FormBuilder) { 
 
     this.contact = new FormGroup({
       "Name": new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
@@ -23,7 +22,7 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getData()
+    
   }
 
   send()  {

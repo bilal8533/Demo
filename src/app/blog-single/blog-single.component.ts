@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-blog-single',
   templateUrl: './blog-single.component.html',
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BlogSingleComponent implements OnInit {
 
-
+   
 
   customOptions: OwlOptions = {
     loop: true,
@@ -46,6 +47,8 @@ export class BlogSingleComponent implements OnInit {
   data: any;
   image1: any[0];
   comment: any;
+  commentreply:any;
+  comments:any;
 
 
 
@@ -66,8 +69,20 @@ export class BlogSingleComponent implements OnInit {
       this.data = res.data
       console.log(this.data)
     })
+   
   }
 
+  reply(){
+    console.log(this.commentreply.value)
+    let data ={
+      "name" : this.name.value,
+      "commentreply":this.commentreply.value
+    }
+    this.http.post('http://localhost:1337/api/commentreplies?populate=*', {data}).subscribe(function(res){
+      console.log(res)
+    })
+
+  }
 
   send() {
     console.log(this.comment.value)
@@ -77,7 +92,7 @@ export class BlogSingleComponent implements OnInit {
       "website": this.website.value,
       "name": this.name.value
     }
-    this.http.post('http://localhost:1337/api/comments', { data }).subscribe(function (res) {
+    this.http.post('http://localhost:1337/api/comments?populate=*', { data }).subscribe(function (res) {
       console.log(res)
     })
   }

@@ -94,7 +94,7 @@
 
                     <!-- section header -->
                     <div class="section-header">
-                        <h3 class="section-title">Comments (3)</h3>
+                        <h3 class="section-title" (ngSubmit)="reply()">Comments (3)</h3>
                         <img src="assets/images/wave.svg" class="wave" alt="wave" />
                     </div>
                     <!-- post comments -->
@@ -102,20 +102,21 @@
 
                         <ul class="comments">
                             <!-- comment item -->
-                            <li class="comment rounded">
+                            <li class="comment rounded" *ngFor="let comment of comments">
                                 <div class="thumb">
                                     <img src="assets/images/other/comment-1.png" alt="John Doe" />
                                 </div>
                                 <div class="details">
-                                    <h4 class="name"><a routerLink="#">John Doe</a></h4>
+                                    <h4 class="name"><a routerLink="#">{{data.attributes.name}}</a></h4>
                                     <span class="date">Jan 08, 2021 14:41 pm</span>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae odio ut
                                         tortor fringilla cursus sed quis odio.</p>
-                                    <a routerLink="#" class="btn btn-default btn-sm">Reply</a>
+                                    <!-- <a routerLink="#" class="btn btn-default btn-sm">Reply</a> -->
+                                    <button type="submit" formControlName="submit" id="submit" value="Submit" class="btn btn-default">Reply</button>
                                 </div>
                             </li>
                             <!-- comment item -->
-                            <li class="comment child rounded">
+                            <!-- <li class="comment child rounded">
                                 <div class="thumb">
                                     <img src="assets/images/other/comment-2.png" alt="John Doe" />
                                 </div>
@@ -124,9 +125,11 @@
                                     <span class="date">Jan 08, 2021 14:41 pm</span>
                                     <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit
                                         amet adipiscing sem neque sed ipsum.</p>
-                                    <a routerLink="#" class="btn btn-default btn-sm">Reply</a>
-                                </div>
-                            </li>
+                                   
+                                    <button type="submit" formControlName="submit" id="submit" value="Submit" class="btn btn-default">Reply</button>
+
+                                </div> 
+                            </li> -->
                             <!-- comment item -->
                                 <!-- <li class="comment rounded">
                                     <div class="thumb">
@@ -152,7 +155,7 @@
                     </div>
                     <!-- comment form -->
                     <div class="comment-form rounded bordered padding-30">
-                       <form id="comment-form" class="comment-form" method="post"  [formGroup]="comment" (ngSubmit)="send()"> 
+                       <form id="comment-form" class="comment-form" method="post"  [formGroup]="comment" (ngSubmit)="send()" (ngSubmit)="reply()" > 
                             <div class="messages"></div>
                               <div class="row">
                                 <div class="column col-md-12">
