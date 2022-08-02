@@ -34,7 +34,7 @@ import { BlogDataService } from './services/blog-data.service';
 import { TagsComponent } from './shared/tags/tags.component';
 import { SponsoredadComponent } from './shared/sponsoredad/sponsoredad.component';
 import { ExploreComponent } from './shared/explore/explore.component';
-
+import { Comment } from '@angular/compiler';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +59,7 @@ import { ExploreComponent } from './shared/explore/explore.component';
     CelebrationComponent,
     TagsComponent,
     SponsoredadComponent,
-    ExploreComponent
+    ExploreComponent,
   ],
   imports: [
     BrowserModule,

@@ -57,12 +57,18 @@
                                 <div class="col-md-6 col-12">
                                     <!-- social icons -->
                                     <ul class="social-icons list-unstyled list-inline mb-0 float-md-end">
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                        <li class="list-inline-item"><a routerLink="#"><i class="far fa-envelope"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i
+                                                    class="fab fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i
+                                                    class="fab fa-twitter"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i
+                                                    class="fab fa-linkedin-in"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i
+                                                    class="fab fa-pinterest"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i
+                                                    class="fab fa-telegram-plane"></i></a></li>
+                                        <li class="list-inline-item"><a routerLink="#"><i
+                                                    class="far fa-envelope"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -80,7 +86,8 @@
                                 lifestyle. She helps clients bring the right content to the right people.</p>
                             <!-- social icons -->
                             <ul class="social-icons list-unstyled list-inline mb-0">
-                                <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item"><a routerLink="#"><i class="fab fa-facebook-f"></i></a>
+                                </li>
                                 <li class="list-inline-item"><a routerLink="#"><i class="fab fa-twitter"></i></a></li>
                                 <li class="list-inline-item"><a routerLink="#"><i class="fab fa-instagram"></i></a></li>
                                 <li class="list-inline-item"><a routerLink="#"><i class="fab fa-pinterest"></i></a></li>
@@ -89,49 +96,47 @@
                             </ul>
                         </div>
                     </div>
-
                     <div class="spacer" data-height="50"></div>
-
+                    
                     <!-- section header -->
                     <div class="section-header">
-                        <h3 class="section-title" (ngSubmit)="reply()">Comments (3)</h3>
+                        <h3 class="section-title" ng-click="reply()">Comments (3)</h3>
                         <img src="assets/images/wave.svg" class="wave" alt="wave" />
                     </div>
                     <!-- post comments -->
-                    <div class="comments bordered padding-30 rounded">
-
+                    <div class="comments bordered padding-30 rounded" *ngFor="let comment of comments">
                         <ul class="comments">
                             <!-- comment item -->
-                            <li class="comment rounded" *ngFor="let comment of comments">
+                            <li class="comment rounded">
                                 <div class="thumb">
                                     <img src="assets/images/other/comment-1.png" alt="John Doe" />
                                 </div>
                                 <div class="details">
-                                    <h4 class="name"><a routerLink="#">{{data.attributes.name}}</a></h4>
+                                    <h4 class="name"><a routerLink="#">{{comment.attributes.name}}</a></h4>
+                                    <span class="email">{{comment.attributes.email}}</span>
                                     <span class="date">Jan 08, 2021 14:41 pm</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae odio ut
-                                        tortor fringilla cursus sed quis odio.</p>
-                                    <!-- <a routerLink="#" class="btn btn-default btn-sm">Reply</a> -->
-                                    <button type="submit" formControlName="submit" id="submit" value="Submit" class="btn btn-default">Reply</button>
+                                    <p>{{comment.attributes.description}}</p>
+                                    <a routerLink="#" class="btn btn-default btn-sm">Reply</a>
                                 </div>
                             </li>
+
                             <!-- comment item -->
-                            <!-- <li class="comment child rounded">
-                                <div class="thumb">
+                            <li class="comment child rounded" *ngFor="let data of Data|keyvalue">
+                                <div class="thumb" *ngIf="data.key == comment.id">
                                     <img src="assets/images/other/comment-2.png" alt="John Doe" />
                                 </div>
-                                <div class="details">
-                                    <h4 class="name"><a routerLink="#">Helen Doe</a></h4>
+                                <div class="details" *ngIf="data.key == comment.id">
+                                    <h4 class="name"><a routerLink="#">{{data.value}}</a></h4>
                                     <span class="date">Jan 08, 2021 14:41 pm</span>
                                     <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit
                                         amet adipiscing sem neque sed ipsum.</p>
-                                   
-                                    <button type="submit" formControlName="submit" id="submit" value="Submit" class="btn btn-default">Reply</button>
+                                    <button type="submit" formControlName="submit" id="submit" value="Submit"
+                                        class="btn btn-default">Reply</button>
 
-                                </div> 
-                            </li> -->
+                                </div>
+                            </li>
                             <!-- comment item -->
-                                <!-- <li class="comment rounded">
+                            <!-- <li class="comment rounded">
                                     <div class="thumb">
                                         <img src="assets/images/other/comment-3.png" alt="John Doe" />
                                     </div>
@@ -155,41 +160,45 @@
                     </div>
                     <!-- comment form -->
                     <div class="comment-form rounded bordered padding-30">
-                       <form id="comment-form" class="comment-form" method="post"  [formGroup]="comment" (ngSubmit)="send()" (ngSubmit)="reply()" > 
+                        <form id="comment-form" class="comment-form" method="post" [formGroup]="comment"
+                            (ngSubmit)="send()" (ngSubmit)="reply()">
                             <div class="messages"></div>
-                              <div class="row">
+                            <div class="row">
                                 <div class="column col-md-12">
                                     <!-- Comment textarea -->
                                     <div class="form-group">
-                                        <textarea formControlName="description" id="description" class="form-control" rows="4" placeholder="Your comment here..."
-                                            required="required"></textarea>
+                                        <textarea formControlName="description" id="description" class="form-control"
+                                            rows="4" placeholder="Your comment here..." required="required"></textarea>
                                     </div>
                                 </div>
-                                
+
                                 <div class="column col-md-6">
                                     <!-- Email input -->
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email address"
-                                            required="required">
+                                        <input type="email" class="form-control" id="email" formControlName="email"
+                                            placeholder="Email address" required="required">
                                     </div>
                                 </div>
-                                
+
                                 <div class="column col-md-6">
                                     <!-- Name input -->
                                     <div class="form-group">
-                                        <input type="text" class="form-control" formControlName="website" id="website" placeholder="Website" required="required">
+                                        <input type="text" class="form-control" formControlName="website" id="website"
+                                            placeholder="Website" required="required">
                                     </div>
                                 </div>
 
                                 <div class="column col-md-12">
                                     <!-- Email input -->
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Your name" required="required">
+                                        <input type="text" class="form-control" id="name" formControlName="name"
+                                            placeholder="Your name" required="required">
                                     </div>
                                 </div>
                             </div>
 
-                            <button type="submit" formControlName="submit" id="submit" value="Submit" class="btn btn-default">Submit</button>
+                            <button type="submit" formControlName="submit" id="submit" value="Submit"
+                                class="btn btn-default">Submit</button>
                             <!-- Submit Button -->
                         </form>
                     </div>
@@ -202,8 +211,10 @@
                         <div class="widget rounded">
                             <div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
                                 <img src="assets/images/logo.svg" alt="logo" class="mb-4" />
-                                <p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
-                                
+                                <p class="mb-4">Hello, We’re content writer who is fascinated by content fashion,
+                                    celebrity and lifestyle. We helps clients bring the right content to the right
+                                    people.</p>
+
                                 <ul class="social-icons list-unstyled list-inline mb-0">
                                     <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                     <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>

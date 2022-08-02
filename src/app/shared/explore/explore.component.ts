@@ -19,5 +19,4 @@ export class ExploreComponent implements OnInit {
       this.categoryData = res.data
     })
 }
-
 }

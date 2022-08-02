@@ -12,8 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BlogSingleComponent implements OnInit {
 
-   
-
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -32,7 +30,6 @@ export class BlogSingleComponent implements OnInit {
       740: {
         items: 3
       },
-
     },
     nav: true
   }
@@ -48,12 +45,13 @@ export class BlogSingleComponent implements OnInit {
   image1: any[0];
   comment: any;
   commentreply:any;
-  comments:any;
-
-
+  comments: any[0];
+  commentReply:any;
+  Data:any
+  
+  
 
   constructor(private http: HttpClient, private activatedRoute: ActivatedRoute, private fb: FormBuilder) {
-
     this.comment = new FormGroup({
       "description": new FormControl(null, Validators.required),
       "email": new FormControl(null, [Validators.required, Validators.email]),
@@ -62,28 +60,65 @@ export class BlogSingleComponent implements OnInit {
     })
   }
 
-
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id')
+     this.getData()
+     this.getComments()
+     this.getCommentReply()
+     console.log(this.comments);     
+     console.log(this.Data);     
+  }
+
+  getData(){
     this.http.get('http://localhost:1337/api/posts/' + this.id + '?populate=*').subscribe((res: any) => {
       this.data = res.data
       console.log(this.data)
-    })
-   
+    }) 
   }
 
+  getComments(){
+    this.http.get('http://localhost:1337/api/comments?populate=*').subscribe((res:any)=>{
+      
+      let Data = []
+      for(let i=0;i<res.data.length;i++){        
+        if(res.data[i].attributes.post.data.id == this.id){
+          Data.push(res.data[i])
+        } 
+      }
+      this.comments = Data
+      console.log(this.comments);      
+      })
+  }
+
+  getCommentReply(){
+    var Data = new Map()
+    this.http.get('http://localhost:1337/api/commentreplies?populate=*').subscribe((res:any)=>{
+      this.commentReply=res.data
+      console.log(this.commentReply);      
+      for(let i =0;i<this.comments.length;i++){
+        // console.log(this.comments[i].id);
+        for(let j =0;j < res.data.length;j++){
+          console.log(res.data[j].attributes.reply.data.id);         
+          if(res.data[j].attributes.reply.data.id == this.comments[i].id){
+            Data.set(this.comments[i].id,res.data[i])
+          }
+        }
+      }
+      this.Data = Data
+      // console.log(this.Data);
+    })
+  }
   reply(){
     console.log(this.commentreply.value)
     let data ={
       "name" : this.name.value,
       "commentreply":this.commentreply.value
     }
-    this.http.post('http://localhost:1337/api/commentreplies?populate=*', {data}).subscribe(function(res){
+    this.http.post('http://localhost:1337/api/commentreplies',{data}).subscribe((res : any) =>{
       console.log(res)
     })
-
   }
-
+  
   send() {
     console.log(this.comment.value)
     let data = {
@@ -92,11 +127,10 @@ export class BlogSingleComponent implements OnInit {
       "website": this.website.value,
       "name": this.name.value
     }
-    this.http.post('http://localhost:1337/api/comments?populate=*', { data }).subscribe(function (res) {
+    this.http.post('http://localhost:1337/api/comments', { data }).subscribe((res: any)=> {
       console.log(res)
     })
   }
-
   get dscription() { return this.comment.get('description'); }
   get email() { return this.comment.get('email'); }
   get website() { return this.comment.get('website'); }
